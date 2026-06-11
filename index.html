@@ -54,6 +54,20 @@
             opacity: 0.7;
         }
 
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                radial-gradient(rgba(49, 43, 34, 0.11) 0.7px, transparent 0.7px),
+                radial-gradient(rgba(255, 253, 247, 0.32) 0.8px, transparent 0.8px);
+            background-position: 0 0, 9px 11px;
+            background-size: 18px 18px, 22px 22px;
+            mix-blend-mode: multiply;
+            opacity: 0.22;
+        }
+
         a { color: inherit; }
 
         .page {
@@ -62,12 +76,36 @@
             margin: 0 auto;
         }
 
+        .page::before {
+            content: "";
+            position: absolute;
+            right: -90px;
+            top: 180px;
+            width: 470px;
+            height: 470px;
+            pointer-events: none;
+            background:
+                repeating-radial-gradient(ellipse at center, transparent 0 23px, rgba(105, 113, 90, 0.17) 24px 25px),
+                radial-gradient(ellipse at center, rgba(255, 253, 247, 0.28), transparent 62%);
+            clip-path: polygon(14% 2%, 89% 12%, 98% 70%, 42% 100%, 0 52%);
+            opacity: 0.42;
+            transform: rotate(-11deg);
+            z-index: -1;
+        }
+
         .topbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 16px;
-            padding: 28px 0 8px;
+            margin-top: 18px;
+            padding: 12px 14px;
+            border: 1px solid rgba(87, 72, 54, 0.18);
+            border-radius: 8px;
+            background: rgba(255, 253, 247, 0.58);
+            box-shadow: 0 16px 44px rgba(55, 45, 34, 0.06);
+            -webkit-backdrop-filter: blur(18px) saturate(116%);
+            backdrop-filter: blur(18px) saturate(116%);
         }
 
         .brand {
@@ -105,10 +143,10 @@
         .hero {
             position: relative;
             display: grid;
-            grid-template-columns: minmax(0, 1.28fr) minmax(300px, 0.72fr);
-            gap: 36px;
+            grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+            gap: clamp(26px, 5vw, 70px);
             align-items: end;
-            padding: 46px 0 28px;
+            padding: 58px 0 34px;
             min-height: calc(100vh - 86px);
         }
 
@@ -124,6 +162,19 @@
             background: rgba(255, 253, 247, 0.34);
             transform: rotate(-9deg);
             z-index: -1;
+        }
+
+        .hero::after {
+            content: "BIOLOGICAL DATA SYSTEMS / BERLIN";
+            position: absolute;
+            right: 16px;
+            top: 18%;
+            color: rgba(111, 89, 68, 0.52);
+            font-size: 0.72rem;
+            font-weight: 700;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            letter-spacing: 0.08em;
         }
 
         .hero-copy { padding: 28px 0 22px; }
@@ -176,12 +227,12 @@
         .hero-name {
             position: relative;
             margin: 0 0 22px;
-            max-width: 9.5ch;
+            max-width: 8.6ch;
             color: var(--soil);
             font-family: var(--name-font);
-            font-size: clamp(5.2rem, 15vw, 11.8rem);
+            font-size: clamp(5.4rem, 16vw, 12.8rem);
             font-weight: 600;
-            line-height: 0.76;
+            line-height: 0.74;
         }
 
         .hero-name::after {
@@ -238,11 +289,15 @@
 
         .hero-panel {
             position: relative;
+            align-self: center;
             padding: 22px;
             border: 1px solid var(--line-strong);
             border-radius: 8px;
-            background: rgba(255, 253, 247, 0.78);
+            background: rgba(255, 253, 247, 0.68);
             box-shadow: var(--shadow);
+            -webkit-backdrop-filter: blur(20px) saturate(112%);
+            backdrop-filter: blur(20px) saturate(112%);
+            transform: translateY(-32px);
         }
 
         .hero-panel::before {
@@ -285,17 +340,38 @@
         }
 
         section {
+            position: relative;
             padding: 52px 0;
             border-top: 1px solid var(--line);
         }
 
+        section::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: -1px;
+            width: min(180px, 42%);
+            height: 1px;
+            background: var(--clay);
+        }
+
         .section-title {
+            display: grid;
+            gap: 6px;
             margin-bottom: 16px;
             font-family: "Fraunces", Georgia, serif;
             font-size: clamp(1.55rem, 2.4vw, 2.05rem);
             font-weight: 600;
             line-height: 1.16;
             letter-spacing: 0;
+        }
+
+        .section-number {
+            color: var(--clay);
+            font-family: "Inter", Arial, sans-serif;
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         .section-copy {
@@ -317,9 +393,11 @@
             padding: 9px 13px;
             border: 1px solid var(--line);
             border-radius: 4px;
-            background: rgba(255, 253, 247, 0.68);
+            background: rgba(255, 253, 247, 0.54);
             color: var(--soil);
             font-size: 0.94rem;
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
         }
 
         .columns {
@@ -333,8 +411,17 @@
             padding: 22px;
             border: 1px solid var(--line);
             border-radius: 8px;
-            background: rgba(255, 253, 247, 0.66);
+            background: rgba(255, 253, 247, 0.58);
             box-shadow: 0 10px 30px rgba(55, 45, 34, 0.05);
+            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
+            transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(155, 102, 74, 0.38);
+            box-shadow: 0 18px 42px rgba(55, 45, 34, 0.09);
         }
 
         .card h3 {
@@ -358,8 +445,10 @@
             padding: 24px;
             border: 1px solid var(--line);
             border-radius: 8px;
-            background: rgba(255, 253, 247, 0.66);
+            background: rgba(255, 253, 247, 0.58);
             box-shadow: 0 10px 30px rgba(55, 45, 34, 0.05);
+            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
         }
 
         .domain::before {
@@ -370,6 +459,14 @@
             bottom: 24px;
             width: 4px;
             background: linear-gradient(180deg, var(--clay), rgba(105, 113, 90, 0.2));
+        }
+
+        .domain:nth-child(even) {
+            margin-left: min(54px, 5vw);
+        }
+
+        .domain:nth-child(odd) {
+            margin-right: min(34px, 4vw);
         }
 
         .domain-head {
@@ -479,7 +576,9 @@
             padding: 16px 18px;
             border: 1px solid var(--line);
             border-radius: 8px;
-            background: rgba(255, 253, 247, 0.68);
+            background: rgba(255, 253, 247, 0.58);
+            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
         }
 
         .contact-row span {
@@ -506,6 +605,10 @@
                 padding-top: 30px;
             }
 
+            .hero-panel {
+                transform: none;
+            }
+
             .topbar {
                 flex-direction: column;
                 align-items: flex-start;
@@ -520,6 +623,16 @@
                 top: 10%;
                 width: 220px;
             }
+
+            .hero::after {
+                display: none;
+            }
+
+            .domain:nth-child(even),
+            .domain:nth-child(odd) {
+                margin-left: 0;
+                margin-right: 0;
+            }
         }
 
         @media (max-width: 640px) {
@@ -533,6 +646,17 @@
 
             .hero-name {
                 font-size: clamp(4.2rem, 24vw, 6.8rem);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .button,
+            .card {
+                transition: none;
             }
         }
     </style>
@@ -589,7 +713,7 @@
         </section>
 
         <section id="about" aria-labelledby="about-title">
-            <h2 class="section-title" id="about-title">About</h2>
+            <h2 class="section-title" id="about-title"><span class="section-number">01 / Profile</span>About</h2>
             <p class="section-copy">
                 An experienced information system engineer and architect on biological and NGS data, including
                 genomics, phylogenetics, and metabarcoding. I like turning complex data into systems that people can
@@ -612,7 +736,7 @@
         </section>
 
         <section id="skills" aria-labelledby="skills-title">
-            <h2 class="section-title" id="skills-title">Top Skills</h2>
+            <h2 class="section-title" id="skills-title"><span class="section-number">02 / Stack</span>Top Skills</h2>
             <p class="section-copy">
                 A practical mix of data systems, scientific computing, and analytics work, shaped by long-running
                 projects where clarity, reproducibility, and maintainability matter.
@@ -632,7 +756,7 @@
         </section>
 
         <section id="domains" aria-labelledby="domains-title">
-            <h2 class="section-title" id="domains-title">Domains</h2>
+            <h2 class="section-title" id="domains-title"><span class="section-number">03 / Practice</span>Domains</h2>
             <p class="section-copy">
                 Work across biological data, research platforms, and applied analytics, with an emphasis on systems
                 that remain legible after the first launch.
@@ -766,7 +890,7 @@
         </section>
 
         <section id="experience" aria-labelledby="experience-title">
-            <h2 class="section-title" id="experience-title">Experience</h2>
+            <h2 class="section-title" id="experience-title"><span class="section-number">04 / Timeline</span>Experience</h2>
             <p class="section-copy">
                 Research, data, and software roles across Berlin and earlier engineering work in Iran.
             </p>
@@ -824,7 +948,7 @@
         </section>
 
         <section id="education" aria-labelledby="education-title">
-            <h2 class="section-title" id="education-title">Education</h2>
+            <h2 class="section-title" id="education-title"><span class="section-number">05 / Formation</span>Education</h2>
             <div class="columns">
                 <article class="card">
                     <h3>Freie Universitat Berlin</h3>
@@ -844,7 +968,7 @@
         <section id="contact" aria-labelledby="contact-title">
             <div class="contact-grid">
                 <div>
-                    <h2 class="section-title" id="contact-title">Contact</h2>
+                    <h2 class="section-title" id="contact-title"><span class="section-number">06 / Signal</span>Contact</h2>
                     <p class="section-copy">
                         If you want to talk about data systems, analytics, or bioinformatics work, I’m easy to reach.
                     </p>
