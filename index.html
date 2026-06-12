@@ -19,27 +19,38 @@
             --soil: #312b22;
             --bark: #6f5944;
             --clay: #9b664a;
+            --clay-bright: #b87755;
             --moss: #69715a;
             --leaf: #354a39;
+            --fern: #80936f;
             --line: rgba(87, 72, 54, 0.2);
             --line-strong: rgba(87, 72, 54, 0.34);
             --shadow: 0 18px 50px rgba(55, 45, 34, 0.08);
+            --shadow-strong: 0 30px 80px rgba(55, 45, 34, 0.16);
             --name-font: "Cormorant Garamond", Georgia, serif;
         }
 
         * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 0;
+            scroll-snap-type: y mandatory;
+        }
 
         body {
             margin: 0;
             color: var(--soil);
             font-family: "Inter", Arial, sans-serif;
             line-height: 1.55;
+            overflow-x: hidden;
             background:
                 linear-gradient(90deg, rgba(105, 113, 90, 0.08) 0 1px, transparent 1px),
                 linear-gradient(180deg, rgba(105, 113, 90, 0.06) 0 1px, transparent 1px),
-                linear-gradient(180deg, #fbfaf5 0%, var(--cloud) 50%, #eee6d9 100%);
-            background-size: 34px 34px, 34px 34px, auto;
+                radial-gradient(circle at 12% 12%, rgba(184, 119, 85, 0.15), transparent 30%),
+                radial-gradient(circle at 88% 6%, rgba(105, 113, 90, 0.16), transparent 28%),
+                linear-gradient(180deg, #fbfaf5 0%, var(--cloud) 52%, #eee6d9 100%);
+            background-size: 34px 34px, 34px 34px, auto, auto, auto;
         }
 
         body::before {
@@ -48,10 +59,10 @@
             inset: 0;
             pointer-events: none;
             background:
-                linear-gradient(120deg, rgba(155, 102, 74, 0.08), transparent 38%),
+                linear-gradient(120deg, rgba(155, 102, 74, 0.1), transparent 38%),
                 repeating-linear-gradient(100deg, rgba(49, 43, 34, 0.025) 0 1px, transparent 1px 11px);
             mix-blend-mode: multiply;
-            opacity: 0.7;
+            opacity: 0.72;
         }
 
         body::after {
@@ -70,40 +81,53 @@
 
         a { color: inherit; }
 
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0;
+        }
+
         .page {
             position: relative;
-            width: min(1180px, calc(100% - 32px));
+            width: 100%;
             margin: 0 auto;
         }
 
         .page::before {
             content: "";
             position: absolute;
-            right: -90px;
-            top: 180px;
-            width: 470px;
-            height: 470px;
+            right: -120px;
+            top: 150px;
+            width: 520px;
+            height: 520px;
             pointer-events: none;
             background:
                 repeating-radial-gradient(ellipse at center, transparent 0 23px, rgba(105, 113, 90, 0.17) 24px 25px),
-                radial-gradient(ellipse at center, rgba(255, 253, 247, 0.28), transparent 62%);
+                radial-gradient(ellipse at center, rgba(255, 253, 247, 0.3), transparent 62%);
             clip-path: polygon(14% 2%, 89% 12%, 98% 70%, 42% 100%, 0 52%);
-            opacity: 0.42;
+            opacity: 0.48;
             transform: rotate(-11deg);
             z-index: -1;
         }
 
         .topbar {
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            z-index: 10;
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 16px;
-            margin-top: 18px;
+            width: min(1180px, calc(100% - 32px));
+            margin: 0;
             padding: 12px 14px;
             border: 1px solid rgba(87, 72, 54, 0.18);
             border-radius: 8px;
-            background: rgba(255, 253, 247, 0.58);
-            box-shadow: 0 16px 44px rgba(55, 45, 34, 0.06);
+            background: rgba(255, 253, 247, 0.7);
+            box-shadow: 0 16px 44px rgba(55, 45, 34, 0.08);
+            transform: translateX(-50%);
             -webkit-backdrop-filter: blur(18px) saturate(116%);
             backdrop-filter: blur(18px) saturate(116%);
         }
@@ -111,8 +135,9 @@
         .brand {
             display: inline-flex;
             align-items: center;
+            color: var(--soil);
             font-family: var(--name-font);
-            font-size: clamp(1.8rem, 4vw, 3.4rem);
+            font-size: 3rem;
             font-weight: 600;
             line-height: 0.9;
             text-decoration: none;
@@ -121,47 +146,46 @@
         .nav {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 8px;
             justify-content: flex-end;
         }
 
         .nav a {
             color: var(--bark);
-            font-size: 0.92rem;
-            font-weight: 600;
+            font-size: 0.9rem;
+            font-weight: 700;
             text-decoration: none;
-            padding: 8px 4px;
-            border-bottom: 1px solid transparent;
+            padding: 8px 10px;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            transition: color 160ms ease, border-color 160ms ease, background 160ms ease, transform 160ms ease;
         }
 
         .nav a:hover,
-        .nav a:focus-visible {
-            border-color: var(--clay);
+        .nav a:focus-visible,
+        .nav a.is-active {
             color: var(--soil);
+            border-color: rgba(155, 102, 74, 0.34);
+            background: rgba(255, 253, 247, 0.72);
+            transform: translateY(-1px);
+        }
+
+        .nav a.is-active {
+            border-color: rgba(53, 74, 57, 0.42);
+            background: rgba(53, 74, 57, 0.12);
+            box-shadow: inset 0 -2px 0 rgba(155, 102, 74, 0.38);
         }
 
         .hero {
             position: relative;
             display: grid;
-            grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
-            gap: clamp(26px, 5vw, 70px);
-            align-items: end;
-            padding: 58px 0 34px;
-            min-height: calc(100vh - 86px);
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            right: 18%;
-            top: 13%;
-            width: min(320px, 32vw);
-            aspect-ratio: 1;
-            border: 1px solid rgba(155, 102, 74, 0.22);
-            border-radius: 48% 52% 44% 56%;
-            background: rgba(255, 253, 247, 0.34);
-            transform: rotate(-9deg);
-            z-index: -1;
+            grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+            gap: clamp(28px, 5vw, 70px);
+            align-items: center;
+            min-height: 100svh;
+            padding: 124px max(16px, calc((100% - 1180px) / 2)) 74px;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
         }
 
         .hero::after {
@@ -177,6 +201,12 @@
             letter-spacing: 0.08em;
         }
 
+        .hero-copy,
+        .hero-visual,
+        section {
+            animation: rise-in 700ms ease both;
+        }
+
         .hero-copy { padding: 28px 0 22px; }
 
         .eyebrow {
@@ -186,7 +216,7 @@
             margin: 0 0 16px;
             color: var(--moss);
             font-size: 0.82rem;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: 0;
             text-transform: uppercase;
         }
@@ -199,38 +229,31 @@
             opacity: 0.65;
         }
 
-        h1,
-        h2,
-        h3,
-        p {
-            margin-top: 0;
-        }
-
         h1 {
             margin: 0 0 22px;
             max-width: 42rem;
             font-family: "Inter", Arial, sans-serif;
-            font-size: clamp(1.26rem, 2.3vw, 1.85rem);
-            font-weight: 600;
-            line-height: 1.35;
+            font-size: 1.72rem;
+            font-weight: 650;
+            line-height: 1.34;
             letter-spacing: 0;
         }
 
         h1 span {
             color: var(--clay);
             font-family: var(--name-font);
-            font-size: 1.18em;
+            font-size: 1.2em;
             font-style: italic;
             font-weight: 500;
         }
 
         .hero-name {
             position: relative;
-            margin: 0 0 22px;
+            margin: 0 0 24px;
             max-width: 8.6ch;
             color: var(--soil);
             font-family: var(--name-font);
-            font-size: clamp(5.4rem, 16vw, 12.8rem);
+            font-size: 10.5rem;
             font-weight: 600;
             line-height: 0.74;
         }
@@ -238,11 +261,10 @@
         .hero-name::after {
             content: "";
             display: block;
-            width: min(360px, 70%);
-            height: 9px;
-            margin-top: 24px;
-            background: linear-gradient(90deg, var(--clay), rgba(105, 113, 90, 0.58), transparent);
-            border-radius: 0;
+            width: min(380px, 74%);
+            height: 10px;
+            margin-top: 26px;
+            background: linear-gradient(90deg, var(--clay-bright), rgba(105, 113, 90, 0.72), transparent);
         }
 
         .lead {
@@ -268,59 +290,141 @@
             border-radius: 4px;
             background: var(--leaf);
             color: #fffdf8;
-            font-weight: 700;
+            font-weight: 800;
             text-decoration: none;
             box-shadow: 0 12px 28px rgba(53, 74, 57, 0.16);
-            transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+            transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease, color 160ms ease;
         }
 
         .button.secondary {
-            background: transparent;
+            background: rgba(255, 253, 247, 0.42);
             color: var(--leaf);
             box-shadow: none;
         }
 
         .button:hover,
         .button:focus-visible {
-            transform: translateY(-1px);
+            transform: translateY(-2px);
             box-shadow: 0 20px 42px rgba(53, 74, 57, 0.18);
             text-decoration: none;
         }
 
-        .hero-panel {
+        .hero-visual {
             position: relative;
-            align-self: center;
-            padding: 22px;
-            border: 1px solid var(--line-strong);
-            border-radius: 8px;
-            background: rgba(255, 253, 247, 0.68);
-            box-shadow: var(--shadow);
-            -webkit-backdrop-filter: blur(20px) saturate(112%);
-            backdrop-filter: blur(20px) saturate(112%);
-            transform: translateY(-32px);
+            min-height: 560px;
         }
 
-        .hero-panel::before {
+        .visual-frame {
+            position: relative;
+            min-height: 470px;
+            overflow: hidden;
+            border: 1px solid var(--line-strong);
+            border-radius: 8px;
+            background:
+                linear-gradient(145deg, rgba(255, 253, 247, 0.16), rgba(255, 253, 247, 0.72)),
+                radial-gradient(circle at 30% 24%, rgba(184, 119, 85, 0.4), transparent 23%),
+                radial-gradient(circle at 72% 20%, rgba(128, 147, 111, 0.36), transparent 22%),
+                radial-gradient(circle at 48% 68%, rgba(53, 74, 57, 0.22), transparent 30%),
+                url("assets/hero-data-visual.webp");
+            background-position: center;
+            background-size: cover;
+            box-shadow: var(--shadow-strong);
+            -webkit-backdrop-filter: blur(16px) saturate(112%);
+            backdrop-filter: blur(16px) saturate(112%);
+        }
+
+        .visual-frame::before,
+        .visual-frame::after {
             content: "";
             position: absolute;
-            inset: 10px;
-            border: 1px solid rgba(105, 113, 90, 0.18);
+            inset: 0;
             pointer-events: none;
         }
 
+        .visual-frame::before {
+            background:
+                repeating-linear-gradient(90deg, rgba(49, 43, 34, 0.12) 0 1px, transparent 1px 44px),
+                repeating-linear-gradient(0deg, rgba(49, 43, 34, 0.08) 0 1px, transparent 1px 44px),
+                radial-gradient(rgba(49, 43, 34, 0.18) 1px, transparent 1px);
+            background-size: auto, auto, 28px 28px;
+            mix-blend-mode: multiply;
+            opacity: 0.34;
+        }
+
+        .visual-frame::after {
+            border: 12px solid rgba(255, 253, 247, 0.28);
+            box-shadow: inset 0 0 0 1px rgba(87, 72, 54, 0.15);
+        }
+
+        .visual-orbit {
+            position: absolute;
+            border: 1px solid rgba(53, 74, 57, 0.22);
+            border-radius: 999px;
+            animation: drift 9s ease-in-out infinite alternate;
+        }
+
+        .visual-orbit.one {
+            right: 10%;
+            top: 12%;
+            width: 52%;
+            aspect-ratio: 1;
+            transform: rotate(-14deg);
+        }
+
+        .visual-orbit.two {
+            left: 8%;
+            bottom: 16%;
+            width: 42%;
+            aspect-ratio: 1;
+            animation-delay: -3s;
+        }
+
+        .node {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 999px;
+            background: var(--clay-bright);
+            box-shadow: 0 0 0 8px rgba(184, 119, 85, 0.13), 0 14px 30px rgba(49, 43, 34, 0.2);
+        }
+
+        .node.one { left: 17%; top: 24%; }
+        .node.two { right: 20%; top: 34%; background: var(--leaf); }
+        .node.three { left: 34%; bottom: 20%; background: var(--fern); }
+        .node.four { right: 16%; bottom: 18%; }
+
+        .hero-panel {
+            position: absolute;
+            left: -28px;
+            right: 28px;
+            bottom: 24px;
+            z-index: 2;
+            padding: 18px;
+            border: 1px solid rgba(87, 72, 54, 0.24);
+            border-radius: 8px;
+            background: rgba(255, 253, 247, 0.78);
+            box-shadow: var(--shadow);
+            -webkit-backdrop-filter: blur(20px) saturate(112%);
+            backdrop-filter: blur(20px) saturate(112%);
+        }
+
         .panel-title {
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             color: var(--bark);
-            font-size: 0.86rem;
-            font-weight: 700;
+            font-size: 0.82rem;
+            font-weight: 800;
             letter-spacing: 0;
             text-transform: uppercase;
         }
 
-        .stat-grid { display: grid; gap: 14px; }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+        }
 
         .stat {
-            padding: 16px 18px;
+            padding: 14px;
             border: 1px solid var(--line);
             border-radius: 8px;
             background: rgba(247, 244, 237, 0.72);
@@ -329,20 +433,27 @@
         .stat strong {
             display: block;
             font-family: "Fraunces", Georgia, serif;
-            font-size: 1.65rem;
-            line-height: 1;
+            font-size: 1.24rem;
+            line-height: 1.05;
             margin-bottom: 6px;
         }
 
         .stat span {
             color: var(--bark);
-            font-size: 0.95rem;
+            font-size: 0.87rem;
         }
 
         section {
             position: relative;
-            padding: 52px 0;
+            display: grid;
+            align-content: center;
+            min-height: 100svh;
+            overflow: hidden;
+            padding: 124px max(16px, calc((100% - 1180px) / 2)) 74px;
             border-top: 1px solid var(--line);
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            isolation: isolate;
         }
 
         section::before {
@@ -350,9 +461,93 @@
             position: absolute;
             left: 0;
             top: -1px;
-            width: min(180px, 42%);
+            width: min(220px, 46%);
             height: 1px;
-            background: var(--clay);
+            background: linear-gradient(90deg, var(--clay-bright), rgba(105, 113, 90, 0.1));
+            z-index: 1;
+        }
+
+        section:not(.hero)::after {
+            content: "";
+            position: absolute;
+            right: max(-120px, calc((100% - 1180px) / 2 - 180px));
+            top: 50%;
+            z-index: -1;
+            width: min(620px, 58vw);
+            height: min(560px, 62vh);
+            border: 1px solid rgba(87, 72, 54, 0.16);
+            border-radius: 8px;
+            background:
+                var(--scene-image, linear-gradient(135deg, rgba(255, 253, 247, 0.18), rgba(255, 253, 247, 0.48))),
+                radial-gradient(circle at 28% 24%, var(--scene-a, rgba(184, 119, 85, 0.28)), transparent 30%),
+                radial-gradient(circle at 72% 34%, var(--scene-b, rgba(105, 113, 90, 0.26)), transparent 32%),
+                linear-gradient(135deg, var(--scene-c, rgba(255, 253, 247, 0.74)), rgba(255, 253, 247, 0.32));
+            background-position: center;
+            background-size: cover;
+            box-shadow: var(--shadow-strong);
+            transform: translateY(-50%) rotate(var(--scene-tilt, -3deg));
+            opacity: 0.82;
+        }
+
+        section:not(.hero) > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Replace any --scene-image gradient with url("assets/your-ai-image.webp") when ready. */
+        #about {
+            --scene-image: linear-gradient(135deg, rgba(184, 119, 85, 0.32), rgba(247, 244, 237, 0.72));
+            --scene-a: rgba(184, 119, 85, 0.3);
+            --scene-b: rgba(53, 74, 57, 0.22);
+            --scene-c: rgba(255, 253, 247, 0.72);
+            --scene-tilt: -4deg;
+        }
+
+        #skills {
+            --scene-image: linear-gradient(135deg, rgba(105, 113, 90, 0.36), rgba(255, 253, 247, 0.64));
+            --scene-a: rgba(53, 74, 57, 0.25);
+            --scene-b: rgba(184, 119, 85, 0.24);
+            --scene-c: rgba(238, 230, 217, 0.68);
+            --scene-tilt: 3deg;
+        }
+
+        #expertise {
+            --scene-image: linear-gradient(135deg, rgba(53, 74, 57, 0.3), rgba(184, 119, 85, 0.22));
+            --scene-a: rgba(128, 147, 111, 0.35);
+            --scene-b: rgba(155, 102, 74, 0.28);
+            --scene-c: rgba(255, 253, 247, 0.58);
+            --scene-tilt: -2deg;
+        }
+
+        #experience {
+            --scene-image: linear-gradient(135deg, rgba(111, 89, 68, 0.28), rgba(247, 244, 237, 0.66));
+            --scene-a: rgba(155, 102, 74, 0.28);
+            --scene-b: rgba(105, 113, 90, 0.32);
+            --scene-c: rgba(255, 253, 247, 0.62);
+            --scene-tilt: 2deg;
+        }
+
+        #education {
+            --scene-image: linear-gradient(135deg, rgba(128, 147, 111, 0.3), rgba(238, 230, 217, 0.72));
+            --scene-a: rgba(53, 74, 57, 0.2);
+            --scene-b: rgba(184, 119, 85, 0.24);
+            --scene-c: rgba(255, 253, 247, 0.7);
+            --scene-tilt: -5deg;
+        }
+
+        #contact {
+            --scene-image: linear-gradient(135deg, rgba(184, 119, 85, 0.34), rgba(105, 113, 90, 0.3));
+            --scene-a: rgba(184, 119, 85, 0.34);
+            --scene-b: rgba(53, 74, 57, 0.28);
+            --scene-c: rgba(255, 253, 247, 0.58);
+            --scene-tilt: 4deg;
+        }
+
+        #skills::after,
+        #experience::after,
+        #contact::after {
+            right: auto;
+            left: max(-120px, calc((100% - 1180px) / 2 - 180px));
         }
 
         .section-title {
@@ -360,9 +555,9 @@
             gap: 6px;
             margin-bottom: 16px;
             font-family: "Fraunces", Georgia, serif;
-            font-size: clamp(1.55rem, 2.4vw, 2.05rem);
-            font-weight: 600;
-            line-height: 1.16;
+            font-size: 2.05rem;
+            font-weight: 650;
+            line-height: 1.12;
             letter-spacing: 0;
         }
 
@@ -370,7 +565,7 @@
             color: var(--clay);
             font-family: "Inter", Arial, sans-serif;
             font-size: 0.74rem;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
         }
 
@@ -380,48 +575,42 @@
             margin-bottom: 22px;
         }
 
-        .chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .chips li {
-            padding: 9px 13px;
-            border: 1px solid var(--line);
-            border-radius: 4px;
-            background: rgba(255, 253, 247, 0.54);
-            color: var(--soil);
-            font-size: 0.94rem;
-            -webkit-backdrop-filter: blur(12px);
-            backdrop-filter: blur(12px);
-        }
-
-        .columns {
+        .columns,
+        .skill-layout {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 18px;
         }
 
-        .card {
-            height: 100%;
-            padding: 22px;
+        .skill-layout {
+            grid-template-columns: minmax(250px, 0.82fr) minmax(0, 1.18fr);
+            align-items: start;
+        }
+
+        .card,
+        .skill-panel,
+        .expertise-card,
+        .timeline-item,
+        .contact-row {
             border: 1px solid var(--line);
             border-radius: 8px;
-            background: rgba(255, 253, 247, 0.58);
+            background: rgba(255, 253, 247, 0.6);
             box-shadow: 0 10px 30px rgba(55, 45, 34, 0.05);
             -webkit-backdrop-filter: blur(14px);
             backdrop-filter: blur(14px);
+        }
+
+        .card {
+            height: 100%;
+            padding: 22px;
             transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
         }
 
-        .card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(155, 102, 74, 0.38);
-            box-shadow: 0 18px 42px rgba(55, 45, 34, 0.09);
+        .card:hover,
+        .expertise-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(155, 102, 74, 0.4);
+            box-shadow: 0 18px 42px rgba(55, 45, 34, 0.1);
         }
 
         .card h3 {
@@ -435,115 +624,184 @@
             color: var(--bark);
         }
 
-        .domains {
-            display: grid;
-            gap: 18px;
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 16px 0 0;
+            padding: 0;
+            list-style: none;
         }
 
-        .domain {
-            position: relative;
-            padding: 24px;
+        .chips li {
+            padding: 9px 13px;
             border: 1px solid var(--line);
-            border-radius: 8px;
+            border-radius: 4px;
             background: rgba(255, 253, 247, 0.58);
-            box-shadow: 0 10px 30px rgba(55, 45, 34, 0.05);
-            -webkit-backdrop-filter: blur(14px);
-            backdrop-filter: blur(14px);
+            color: var(--soil);
+            font-size: 0.94rem;
+            font-weight: 650;
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
         }
 
-        .domain::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 24px;
-            bottom: 24px;
-            width: 4px;
-            background: linear-gradient(180deg, var(--clay), rgba(105, 113, 90, 0.2));
+        .skill-panel {
+            padding: 22px;
         }
 
-        .domain:nth-child(even) {
-            margin-left: min(54px, 5vw);
+        .skill-panel h3 {
+            margin-bottom: 12px;
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 1.4rem;
+            line-height: 1.15;
         }
 
-        .domain:nth-child(odd) {
-            margin-right: min(34px, 4vw);
+        .skill-panel p {
+            color: var(--bark);
+            margin-bottom: 0;
         }
 
-        .domain-head {
+        .skill-bars {
+            display: grid;
+            gap: 15px;
+        }
+
+        .skill-bar {
+            display: grid;
+            gap: 7px;
+        }
+
+        .skill-bar span {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 12px;
+            gap: 16px;
+            color: var(--soil);
+            font-size: 0.94rem;
+            font-weight: 750;
+        }
+
+        .skill-bar em {
+            color: var(--clay);
+            font-style: normal;
+            font-weight: 800;
+        }
+
+        .meter {
+            height: 9px;
+            overflow: hidden;
+            border: 1px solid rgba(87, 72, 54, 0.18);
+            border-radius: 999px;
+            background: rgba(255, 253, 247, 0.7);
+        }
+
+        .meter i {
+            display: block;
+            width: var(--level);
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, var(--leaf), var(--fern), var(--clay-bright));
+            animation: fill-meter 900ms ease both;
+            transform-origin: left;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .expertise-card {
+            position: relative;
+            min-height: 230px;
+            grid-column: span 2;
+            overflow: hidden;
+            padding: 24px;
+            transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .expertise-card:nth-child(1),
+        .expertise-card:nth-child(2) {
+            grid-column: span 3;
+        }
+
+        .expertise-card::before {
+            content: "";
+            position: absolute;
+            right: -58px;
+            top: -58px;
+            width: 170px;
+            aspect-ratio: 1;
+            border: 1px solid rgba(155, 102, 74, 0.22);
+            border-radius: 999px;
+            background:
+                repeating-radial-gradient(circle, transparent 0 13px, rgba(105, 113, 90, 0.14) 14px 15px);
         }
 
         .domain-kicker {
-            margin: 0;
+            margin: 0 0 14px;
             color: var(--clay);
-            font-size: 0.82rem;
-            font-weight: 700;
-            letter-spacing: 0;
+            font-size: 0.8rem;
+            font-weight: 800;
             text-transform: uppercase;
         }
 
-        .domain h3 {
-            margin-bottom: 0;
-            font-size: clamp(1.05rem, 1.7vw, 1.22rem);
-            line-height: 1.34;
+        .expertise-card h3 {
+            position: relative;
+            max-width: 18rem;
+            margin-bottom: 12px;
+            font-size: 1.28rem;
+            line-height: 1.18;
         }
 
-        .domain-copy {
-            max-width: 56rem;
+        .expertise-card p {
+            position: relative;
+            color: var(--bark);
             margin-bottom: 18px;
-            color: var(--bark);
         }
 
-        .mini-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 14px;
+        .mini-list {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
         }
 
-        .mini-card {
-            padding: 16px 18px;
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            background: rgba(247, 244, 237, 0.68);
-        }
-
-        .mini-card strong {
-            display: block;
-            margin-bottom: 6px;
+        .mini-list li {
+            padding: 7px 9px;
+            border: 1px solid rgba(87, 72, 54, 0.16);
+            border-radius: 4px;
+            background: rgba(247, 244, 237, 0.64);
             color: var(--soil);
-        }
-
-        .mini-card span {
-            color: var(--bark);
-            font-size: 0.94rem;
+            font-size: 0.82rem;
+            font-weight: 700;
         }
 
         .timeline {
             display: grid;
-            gap: 16px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
         }
 
         .timeline-item {
             display: grid;
-            grid-template-columns: 200px minmax(0, 1fr);
-            gap: 18px;
-            padding: 18px 0;
-            border-top: 1px solid var(--line);
+            grid-template-columns: 1fr;
+            gap: 8px;
+            padding: 14px 16px;
+            transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
         }
 
-        .timeline-item:first-child {
-            border-top: 0;
-            padding-top: 0;
+        .timeline-item:hover {
+            transform: translateX(4px);
+            border-color: rgba(155, 102, 74, 0.34);
+            box-shadow: 0 16px 38px rgba(55, 45, 34, 0.08);
         }
 
         .timeline-time {
             color: var(--clay);
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .timeline-item h3 {
@@ -574,11 +832,6 @@
             justify-content: space-between;
             gap: 16px;
             padding: 16px 18px;
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            background: rgba(255, 253, 247, 0.58);
-            -webkit-backdrop-filter: blur(14px);
-            backdrop-filter: blur(14px);
         }
 
         .contact-row span {
@@ -586,52 +839,113 @@
         }
 
         footer {
-            padding: 22px 0 42px;
+            position: absolute;
+            left: max(16px, calc((100% - 1180px) / 2));
+            bottom: 22px;
+            z-index: 3;
+            padding: 0;
             color: var(--bark);
             font-size: 0.95rem;
         }
 
-        @media (max-width: 920px) {
+        @keyframes rise-in {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fill-meter {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        @keyframes drift {
+            from { transform: translate3d(0, 0, 0) rotate(-8deg); }
+            to { transform: translate3d(10px, -14px, 0) rotate(8deg); }
+        }
+
+        @media (max-width: 980px) {
             .hero,
             .contact-grid,
             .columns,
-            .mini-grid,
+            .skill-layout,
             .timeline-item {
                 grid-template-columns: 1fr;
             }
 
             .hero {
-                min-height: auto;
-                padding-top: 30px;
-            }
-
-            .hero-panel {
-                transform: none;
-            }
-
-            .topbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .nav {
-                justify-content: flex-start;
-            }
-
-            .hero::before {
-                right: 4%;
-                top: 10%;
-                width: 220px;
+                min-height: 100svh;
+                padding-top: 144px;
             }
 
             .hero::after {
                 display: none;
             }
 
-            .domain:nth-child(even),
-            .domain:nth-child(odd) {
-                margin-left: 0;
-                margin-right: 0;
+            .hero-visual {
+                min-height: auto;
+            }
+
+            .visual-frame {
+                min-height: 380px;
+            }
+
+            .hero-panel {
+                position: relative;
+                left: auto;
+                right: auto;
+                bottom: auto;
+                margin-top: 14px;
+            }
+
+            .expertise-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .expertise-card,
+            .expertise-card:nth-child(1),
+            .expertise-card:nth-child(2) {
+                grid-column: span 1;
+            }
+
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+                top: 8px;
+            }
+
+            .nav {
+                justify-content: flex-start;
+            }
+
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding-top: 144px;
+            }
+
+            .brand {
+                font-size: 2.45rem;
+            }
+
+            h1 {
+                font-size: 1.48rem;
+            }
+
+            .hero-name {
+                font-size: 7rem;
+            }
+
+            .section-title {
+                font-size: 1.82rem;
             }
         }
 
@@ -640,12 +954,36 @@
                 width: min(100% - 20px, 1180px);
             }
 
+            section,
+            .hero {
+                padding-right: 10px;
+                padding-left: 10px;
+            }
+
             h1 {
                 max-width: 100%;
             }
 
             .hero-name {
-                font-size: clamp(4.2rem, 24vw, 6.8rem);
+                font-size: 5.2rem;
+            }
+
+            .actions .button,
+            .contact .button {
+                width: 100%;
+            }
+
+            .stat-grid,
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .visual-frame {
+                min-height: 300px;
+            }
+
+            .contact-row {
+                display: grid;
             }
         }
 
@@ -654,9 +992,12 @@
                 scroll-behavior: auto;
             }
 
-            .button,
-            .card {
-                transition: none;
+            *,
+            *::before,
+            *::after {
+                animation-duration: 1ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 1ms !important;
             }
         }
     </style>
@@ -665,18 +1006,20 @@
     <main class="page">
         <header class="topbar">
             <div class="brand">
-                <span>Majid Vafadar</span>
+                <span>Personal Website</span>
             </div>
             <nav class="nav" aria-label="Primary">
+                <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#skills">Skills</a>
-                <a href="#domains">Domains</a>
+                <a href="#expertise">Expertise</a>
                 <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
                 <a href="#contact">Contact</a>
             </nav>
         </header>
 
-        <section class="hero" aria-labelledby="hero-title">
+        <section class="hero" id="home" aria-labelledby="hero-title">
             <div class="hero-copy">
                 <p class="eyebrow">Berlin, Germany</p>
                 <p class="hero-name">Majid Vafadar</p>
@@ -690,26 +1033,40 @@
                 </p>
                 <div class="actions">
                     <a class="button" href="mailto:m.vafadar@pm.me">Contact me</a>
-                    <a class="button secondary" href="#domains">See domains</a>
+                    <a class="button secondary" href="#expertise">See expertise</a>
+                    <a class="button secondary" href="https://www.linkedin.com/in/mvafadar" target="_blank" rel="noreferrer">LinkedIn</a>
                 </div>
             </div>
-            <aside class="hero-panel" aria-label="Highlights">
-                <div class="panel-title">At a glance</div>
-                <div class="stat-grid">
-                    <div class="stat">
-                        <strong>Data first</strong>
-                        <span>Data architecture, engineering, ML, and visualization.</span>
-                    </div>
-                    <div class="stat">
-                        <strong>Berlin based</strong>
-                        <span>Working in Germany with an international profile and remote-friendly mindset.</span>
-                    </div>
-                    <div class="stat">
-                        <strong>Scientific focus</strong>
-                        <span>Genomics, phylogenetics, metabarcoding, and NGS workflows.</span>
-                    </div>
+            <div class="hero-visual" aria-label="Abstract biological data visual">
+                <!-- Optional AI image prompt for assets/hero-data-visual.webp:
+                Abstract scientific data portrait background, biological networks, genomics patterns, warm paper texture,
+                muted moss green, clay, cream, elegant editorial portfolio style, subtle depth, no text, no logos. -->
+                <div class="visual-frame" aria-hidden="true">
+                    <span class="visual-orbit one"></span>
+                    <span class="visual-orbit two"></span>
+                    <span class="node one"></span>
+                    <span class="node two"></span>
+                    <span class="node three"></span>
+                    <span class="node four"></span>
                 </div>
-            </aside>
+                <aside class="hero-panel" aria-label="Highlights">
+                    <div class="panel-title">At a glance</div>
+                    <div class="stat-grid">
+                        <div class="stat">
+                            <strong>15+ years</strong>
+                            <span>Software, data, and scientific systems work.</span>
+                        </div>
+                        <div class="stat">
+                            <strong>Berlin based</strong>
+                            <span>Research data architecture with an international profile.</span>
+                        </div>
+                        <div class="stat">
+                            <strong>Bio/data</strong>
+                            <span>Genomics, pipelines, analytics, and visualization.</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
         </section>
 
         <section id="about" aria-labelledby="about-title">
@@ -737,154 +1094,125 @@
 
         <section id="skills" aria-labelledby="skills-title">
             <h2 class="section-title" id="skills-title"><span class="section-number">02 / Stack</span>Top Skills</h2>
-            <p class="section-copy">
-                A practical mix of data systems, scientific computing, and analytics work, shaped by long-running
-                projects where clarity, reproducibility, and maintainability matter.
-            </p>
-            <ul class="chips">
-                <li>Data Architecture</li>
-                <li>Data Engineering</li>
-                <li>Machine Learning</li>
-                <li>Bioinformatics</li>
-                <li>Genomics</li>
-                <li>Phylogenetics</li>
-                <li>Metabarcoding</li>
-                <li>ETL Pipelines</li>
-                <li>Data Visualization</li>
-                <li>Information Systems</li>
-            </ul>
+            <div class="skill-layout">
+                <div class="skill-panel">
+                    <h3>Systems that make scientific data easier to trust.</h3>
+                    <p>
+                        A practical mix of data systems, scientific computing, and analytics work, shaped by long-running
+                        projects where clarity, reproducibility, and maintainability matter.
+                    </p>
+                    <ul class="chips">
+                        <li>Genomics</li>
+                        <li>ETL Pipelines</li>
+                        <li>Visualization</li>
+                        <li>Information Systems</li>
+                    </ul>
+                </div>
+                <div class="skill-bars" aria-label="Skill focus areas">
+                    <div class="skill-bar">
+                        <span><strong>Data Architecture</strong><em>Core</em></span>
+                        <div class="meter"><i style="--level: 94%"></i></div>
+                    </div>
+                    <div class="skill-bar">
+                        <span><strong>Bioinformatics and NGS</strong><em>Core</em></span>
+                        <div class="meter"><i style="--level: 90%"></i></div>
+                    </div>
+                    <div class="skill-bar">
+                        <span><strong>Data Engineering</strong><em>Strong</em></span>
+                        <div class="meter"><i style="--level: 88%"></i></div>
+                    </div>
+                    <div class="skill-bar">
+                        <span><strong>Analytics and Visualization</strong><em>Strong</em></span>
+                        <div class="meter"><i style="--level: 82%"></i></div>
+                    </div>
+                    <div class="skill-bar">
+                        <span><strong>Machine Learning</strong><em>Applied</em></span>
+                        <div class="meter"><i style="--level: 74%"></i></div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section id="domains" aria-labelledby="domains-title">
-            <h2 class="section-title" id="domains-title"><span class="section-number">03 / Practice</span>Domains</h2>
+        <section id="expertise" aria-labelledby="expertise-title">
+            <h2 class="section-title" id="expertise-title"><span class="section-number">03 / Practice</span>Expertise</h2>
             <p class="section-copy">
                 Work across biological data, research platforms, and applied analytics, with an emphasis on systems
                 that remain legible after the first launch.
             </p>
-            <div class="domains">
-                <article class="domain">
-                    <div class="domain-head">
-                        <p class="domain-kicker">01 / Data Architecture</p>
-                        <h3>Enterprise data structures and platform design</h3>
-                    </div>
-                    <p class="domain-copy">
+            <div class="expertise-grid">
+                <article class="expertise-card">
+                    <p class="domain-kicker">01 / Data Architecture</p>
+                    <h3>Enterprise data structures and platform design</h3>
+                    <p>
                         Data architecture work around long-lived systems, integrations, and schemas that need to support
                         both operational use and downstream analytics.
                     </p>
-                    <div class="mini-grid">
-                        <div class="mini-card">
-                            <strong>Focus</strong>
-                            <span>ETL, modeling, storage, migration, and platform organization.</span>
-                        </div>
-                        <div class="mini-card">
-                            <strong>Output</strong>
-                            <span>Stable layers, clear ownership, and maintainable data access.</span>
-                        </div>
-                        <div class="mini-card">
-                            <strong>Role</strong>
-                            <span>Data Architect at Museum fur Naturkunde, Berlin.</span>
-                        </div>
-                    </div>
+                    <ul class="mini-list">
+                        <li>ETL</li>
+                        <li>Modeling</li>
+                        <li>Migration</li>
+                        <li>Ownership</li>
+                    </ul>
                 </article>
 
-                <article class="domain">
-                    <div class="domain-head">
-                        <p class="domain-kicker">02 / Bioinformatics</p>
-                        <h3>NGS, genomics, phylogenetics, and metabarcoding</h3>
-                    </div>
-                    <p class="domain-copy">
+                <article class="expertise-card">
+                    <p class="domain-kicker">02 / Bioinformatics</p>
+                    <h3>NGS, genomics, phylogenetics, and metabarcoding</h3>
+                    <p>
                         Bioinformatics and scientific data work focused on biological analysis pipelines, reproducible
                         processing, and visualization for NGS and related datasets.
                     </p>
-                    <div class="mini-grid">
-                        <div class="mini-card">
-                            <strong>Focus</strong>
-                            <span>Genomics, phylogenetics, metabarcoding, and NGS workflows.</span>
-                        </div>
-                        <div class="mini-card">
-                            <strong>Output</strong>
-                            <span>Analysis-ready data, reproducible steps, and scientific insight.</span>
-                        </div>
-                        <div class="mini-card">
-                            <strong>Role</strong>
-                            <span>Bioinformatician at BeGenDiv and Leibniz IZW.</span>
-                        </div>
-                    </div>
+                    <ul class="mini-list">
+                        <li>Genomics</li>
+                        <li>Metabarcoding</li>
+                        <li>NGS</li>
+                        <li>Workflows</li>
+                    </ul>
                 </article>
 
-                <article class="domain">
-                    <div class="domain-head">
-                        <p class="domain-kicker">03 / Data Engineering</p>
-                        <h3>Pipeline design, migration, and platform glue</h3>
-                    </div>
-                    <p class="domain-copy">
+                <article class="expertise-card">
+                    <p class="domain-kicker">03 / Data Engineering</p>
+                    <h3>Pipeline design, migration, and platform glue</h3>
+                    <p>
                         Data engineering for integrating independent systems, building ETL pipelines, and making
                         information flow predictable across teams and tools.
                     </p>
-                    <div class="mini-grid">
-                        <div class="mini-card">
-                            <strong>Focus</strong>
-                            <span>Integration, transformation, automation, and portal design.</span>
-                        </div>
-                        <div class="mini-card">
-                            <strong>Output</strong>
-                            <span>Unified portals, data pipelines, and cleaner operational workflows.</span>
-                        </div>
-                        <div class="mini-card">
-                            <strong>Role</strong>
-                            <span>Data Engineer at Hoze Honari and Max Planck Institute.</span>
-                        </div>
-                    </div>
+                    <ul class="mini-list">
+                        <li>Integration</li>
+                        <li>Automation</li>
+                        <li>Django</li>
+                        <li>Portals</li>
+                    </ul>
                 </article>
 
-                <article class="domain">
-                    <div class="domain-head">
-                        <p class="domain-kicker">04 / Analytics and Visualization</p>
-                        <h3>Dashboards, reports, and decision support</h3>
-                    </div>
-                    <p class="domain-copy">
+                <article class="expertise-card">
+                    <p class="domain-kicker">04 / Analytics</p>
+                    <h3>Dashboards, reports, and decision support</h3>
+                    <p>
                         Building dashboards and reporting interfaces for scientists, researchers, and organizations that
                         need data to be understandable, not just available.
                     </p>
-                    <div class="mini-grid">
-                        <div class="mini-card">
-                            <strong>Focus</strong>
-                            <span>Visualization, reporting, analytics portals, and user-facing tools.</span>
-                        </div>
-                        <div class="mini-card">
-                            <strong>Output</strong>
-                            <span>Interactive web apps and clearer decision support.</span>
-                        </div>
-                        <div class="mini-card">
-                            <strong>Role</strong>
-                            <span>Data Analyst and Software Developer at Negar Co.</span>
-                        </div>
-                    </div>
+                    <ul class="mini-list">
+                        <li>Dashboards</li>
+                        <li>Reports</li>
+                        <li>Tableau</li>
+                        <li>Decision support</li>
+                    </ul>
                 </article>
 
-                <article class="domain">
-                    <div class="domain-head">
-                        <p class="domain-kicker">05 / Machine Learning</p>
-                        <h3>Modeling, learning systems, and data science</h3>
-                    </div>
-                    <p class="domain-copy">
+                <article class="expertise-card">
+                    <p class="domain-kicker">05 / Machine Learning</p>
+                    <h3>Modeling, learning systems, and data science</h3>
+                    <p>
                         Machine learning sits alongside the rest of the stack, supporting exploratory analysis, applied
                         data science, and pattern discovery in larger systems.
                     </p>
-                    <div class="mini-grid">
-                        <div class="mini-card">
-                            <strong>Focus</strong>
-                            <span>Applied ML, classification, data science methods, and analysis.</span>
-                        </div>
-                        <div class="mini-card">
-                            <strong>Output</strong>
-                            <span>Better signal extraction and smarter support for decision making.</span>
-                        </div>
-                        <div class="mini-card">
-                            <strong>Role</strong>
-                            <span>Used across current data and scientific work.</span>
-                        </div>
-                    </div>
+                    <ul class="mini-list">
+                        <li>Classification</li>
+                        <li>Data science</li>
+                        <li>Pattern discovery</li>
+                        <li>Signal</li>
+                    </ul>
                 </article>
             </div>
         </section>
@@ -965,7 +1293,7 @@
             </div>
         </section>
 
-        <section id="contact" aria-labelledby="contact-title">
+        <section class="contact" id="contact" aria-labelledby="contact-title">
             <div class="contact-grid">
                 <div>
                     <h2 class="section-title" id="contact-title"><span class="section-number">06 / Signal</span>Contact</h2>
@@ -999,5 +1327,38 @@
             <p>&copy; 2026 Majid Vafadar</p>
         </footer>
     </main>
+    <script>
+        const navLinks = Array.from(document.querySelectorAll(".nav a[href^='#']"));
+        const sections = navLinks
+            .map((link) => document.querySelector(link.getAttribute("href")))
+            .filter(Boolean);
+
+        const setActiveLink = (id) => {
+            navLinks.forEach((link) => {
+                const isActive = link.getAttribute("href") === `#${id}`;
+                link.classList.toggle("is-active", isActive);
+                if (isActive) {
+                    link.setAttribute("aria-current", "page");
+                } else {
+                    link.removeAttribute("aria-current");
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            const active = entries
+                .filter((entry) => entry.isIntersecting)
+                .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+            if (active) {
+                setActiveLink(active.target.id);
+            }
+        }, {
+            threshold: [0.45, 0.6, 0.75],
+        });
+
+        sections.forEach((section) => observer.observe(section));
+        setActiveLink("home");
+    </script>
 </body>
 </html>
