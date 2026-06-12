@@ -321,14 +321,14 @@
 
         .hero-visual {
             position: relative;
-            min-height: 700px;
+            min-height: 720px;
         }
 
         .visual-frame {
             position: relative;
             width: min(430px, 100%);
             margin-left: auto;
-            transform: translateY(-18px);
+            transform: translateY(-30px);
             overflow: hidden;
             border: 1px solid var(--line-strong);
             border-radius: 8px;
@@ -377,7 +377,7 @@
             position: absolute;
             left: -28px;
             right: 28px;
-            bottom: 18px;
+            bottom: -4px;
             z-index: 2;
             padding: 18px;
             border: 1px solid rgba(87, 72, 54, 0.24);
@@ -558,16 +558,11 @@
         }
 
         #expertise {
-            --section-bg-image: linear-gradient(135deg, rgba(112, 71, 255, 0.56), rgba(18, 87, 255, 0.42));
-            --section-bg-a: #7047ff;
-            --section-bg-b: #1257ff;
-            --section-glow-a: rgba(0, 217, 255, 0.38);
-            --section-glow-b: rgba(215, 255, 47, 0.32);
-            --scene-image: linear-gradient(135deg, rgba(255, 46, 136, 0.44), rgba(0, 217, 255, 0.32));
-            --scene-a: rgba(215, 255, 47, 0.36);
-            --scene-b: rgba(240, 238, 233, 0.34);
-            --scene-c: rgba(16, 32, 26, 0.14);
-            --scene-tilt: -2deg;
+            --scene-image: linear-gradient(135deg, rgba(240, 238, 233, 0.62), rgba(0, 217, 255, 0.22));
+            --scene-a: rgba(18, 87, 255, 0.24);
+            --scene-b: rgba(255, 46, 136, 0.2);
+            --scene-c: rgba(215, 255, 47, 0.24);
+            --scene-tilt: 2deg;
         }
 
         #experience {
@@ -1081,8 +1076,6 @@
             .hero,
             .contact-grid,
             .columns,
-            .education-headings,
-            .education-skills,
             .skill-layout,
             .timeline-item {
                 grid-template-columns: 1fr;
@@ -1099,19 +1092,19 @@
 
             .hero-visual {
                 min-height: 0;
-                padding-bottom: 170px;
+                padding-bottom: 210px;
             }
 
             .visual-frame {
                 width: min(380px, 100%);
                 margin-right: auto;
-                transform: translateY(-12px);
+                transform: translateY(-20px);
             }
 
             .hero-panel {
                 left: 12px;
                 right: 12px;
-                bottom: 20px;
+                bottom: 8px;
                 margin-top: 0;
             }
 
@@ -1148,6 +1141,45 @@
 
             .timeline {
                 grid-template-columns: 1fr;
+            }
+
+            #education .section-inner {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            #education .education-headings,
+            #education .education-skills {
+                display: contents;
+            }
+
+            #education .education-headings .section-title:first-child {
+                order: 1;
+            }
+
+            #education .education-list {
+                order: 2;
+            }
+
+            #education .education-headings .section-title:last-child {
+                order: 3;
+            }
+
+            #education .education-side {
+                order: 4;
+            }
+
+            #education .certifications-card {
+                order: 5;
+            }
+
+            #education .interests-block .section-title {
+                order: 6;
+            }
+
+            #education .interests-panel {
+                order: 7;
             }
 
             section {
@@ -1276,9 +1308,9 @@
                     I work across science & engineering, while being an <span>artist</span>.
                 </h1>
                 <p class="lead">
-                    My work moves between biological data, information systems, and artistic practice. I build durable
-                    data systems, explore scientific questions, and keep a creative practice across poetry, performance,
-                    and video.
+                    Filling the gap between scientific demand and engineered solutions. I design and maintain durable
+                    architecture for scientific data infrastructure and information systems.<br>
+                    Having a creative mindset to solve problems as well as to create art.
                 </p>
                 <div class="actions">
                     <a class="button" href="mailto:m.vafadar@pm.me">Contact me</a>
@@ -1311,7 +1343,7 @@
             </div>
         </section>
 
-        <section class="section-full" id="expertise" aria-labelledby="expertise-title">
+        <section class="section-limited" id="expertise" aria-labelledby="expertise-title">
             <div class="section-inner">
                 <h2 class="section-title" id="expertise-title">Area of Expertise</h2>
                 <p class="section-copy">
