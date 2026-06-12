@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Majid Vafadar - Data Architect, Bioinformatician, and Data Scientist in Berlin.">
+    <meta name="description" content="Majid Vafadar - scientist, engineer, and artist in Berlin.">
     <meta property="og:title" content="Majid Vafadar">
-    <meta property="og:description" content="Data Architect, Bioinformatician, and Data Scientist in Berlin.">
+    <meta property="og:description" content="Scientist, engineer, and artist in Berlin.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mj-vafadar.github.io/">
     <title>Majid Vafadar | Personal Website</title>
@@ -15,6 +15,7 @@
     <style>
         :root {
             --cloud: #f7f4ed;
+            --cloud-dancer: #f0eee9;
             --paper: #fffdf7;
             --soil: #312b22;
             --bark: #6f5944;
@@ -23,6 +24,12 @@
             --moss: #69715a;
             --leaf: #354a39;
             --fern: #80936f;
+            --electric-blue: #1257ff;
+            --signal-cyan: #00d9ff;
+            --hot-pink: #ff2e88;
+            --acid-lime: #d7ff2f;
+            --violet: #7047ff;
+            --poster-ink: #10201a;
             --line: rgba(87, 72, 54, 0.2);
             --line-strong: rgba(87, 72, 54, 0.34);
             --shadow: 0 18px 50px rgba(55, 45, 34, 0.08);
@@ -47,9 +54,9 @@
             background:
                 linear-gradient(90deg, rgba(105, 113, 90, 0.08) 0 1px, transparent 1px),
                 linear-gradient(180deg, rgba(105, 113, 90, 0.06) 0 1px, transparent 1px),
-                radial-gradient(circle at 12% 12%, rgba(184, 119, 85, 0.15), transparent 30%),
-                radial-gradient(circle at 88% 6%, rgba(105, 113, 90, 0.16), transparent 28%),
-                linear-gradient(180deg, #fbfaf5 0%, var(--cloud) 52%, #eee6d9 100%);
+                radial-gradient(circle at 12% 12%, rgba(0, 217, 255, 0.11), transparent 30%),
+                radial-gradient(circle at 88% 6%, rgba(255, 46, 136, 0.1), transparent 28%),
+                linear-gradient(180deg, #fbfaf5 0%, var(--cloud-dancer) 52%, #eee6d9 100%);
             background-size: 34px 34px, 34px 34px, auto, auto, auto;
         }
 
@@ -59,7 +66,7 @@
             inset: 0;
             pointer-events: none;
             background:
-                linear-gradient(120deg, rgba(155, 102, 74, 0.1), transparent 38%),
+                linear-gradient(120deg, rgba(0, 217, 255, 0.08), transparent 38%),
                 repeating-linear-gradient(100deg, rgba(49, 43, 34, 0.025) 0 1px, transparent 1px 11px);
             mix-blend-mode: multiply;
             opacity: 0.72;
@@ -123,10 +130,10 @@
             width: min(1180px, calc(100% - 32px));
             margin: 0;
             padding: 12px 14px;
-            border: 1px solid rgba(87, 72, 54, 0.18);
+            border: 1px solid rgba(18, 87, 255, 0.16);
             border-radius: 8px;
-            background: rgba(255, 253, 247, 0.7);
-            box-shadow: 0 16px 44px rgba(55, 45, 34, 0.08);
+            background: rgba(240, 238, 233, 0.82);
+            box-shadow: 0 16px 44px rgba(16, 32, 26, 0.12);
             transform: translateX(-50%);
             -webkit-backdrop-filter: blur(18px) saturate(116%);
             backdrop-filter: blur(18px) saturate(116%);
@@ -148,32 +155,35 @@
             flex-wrap: wrap;
             gap: 8px;
             justify-content: flex-end;
+            align-items: center;
         }
 
         .nav a {
-            color: var(--bark);
+            color: var(--poster-ink);
             font-size: 0.9rem;
             font-weight: 700;
+            line-height: 1;
             text-decoration: none;
-            padding: 8px 10px;
+            white-space: nowrap;
+            padding: 9px 11px;
             border: 1px solid transparent;
             border-radius: 999px;
-            transition: color 160ms ease, border-color 160ms ease, background 160ms ease, transform 160ms ease;
+            transition: color 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
         }
 
         .nav a:hover,
         .nav a:focus-visible,
         .nav a.is-active {
-            color: var(--soil);
-            border-color: rgba(155, 102, 74, 0.34);
-            background: rgba(255, 253, 247, 0.72);
-            transform: translateY(-1px);
+            color: var(--poster-ink);
+            border-color: rgba(18, 87, 255, 0.28);
+            background: rgba(255, 255, 255, 0.76);
         }
 
         .nav a.is-active {
-            border-color: rgba(53, 74, 57, 0.42);
-            background: rgba(53, 74, 57, 0.12);
-            box-shadow: inset 0 -2px 0 rgba(155, 102, 74, 0.38);
+            color: var(--paper);
+            border-color: var(--poster-ink);
+            background: var(--poster-ink);
+            box-shadow: 0 8px 18px rgba(16, 32, 26, 0.14);
         }
 
         .hero {
@@ -311,26 +321,31 @@
 
         .hero-visual {
             position: relative;
-            min-height: 560px;
+            min-height: 700px;
         }
 
         .visual-frame {
             position: relative;
-            min-height: 470px;
+            width: min(430px, 100%);
+            margin-left: auto;
+            transform: translateY(-18px);
             overflow: hidden;
             border: 1px solid var(--line-strong);
             border-radius: 8px;
-            background:
-                linear-gradient(145deg, rgba(255, 253, 247, 0.16), rgba(255, 253, 247, 0.72)),
-                radial-gradient(circle at 30% 24%, rgba(184, 119, 85, 0.4), transparent 23%),
-                radial-gradient(circle at 72% 20%, rgba(128, 147, 111, 0.36), transparent 22%),
-                radial-gradient(circle at 48% 68%, rgba(53, 74, 57, 0.22), transparent 30%),
-                url("assets/hero-data-visual.webp");
+            background: rgba(240, 238, 233, 0.72);
             background-position: center;
             background-size: cover;
             box-shadow: var(--shadow-strong);
             -webkit-backdrop-filter: blur(16px) saturate(112%);
             backdrop-filter: blur(16px) saturate(112%);
+        }
+
+        .portrait-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-position: center;
+            filter: sepia(0.2) saturate(0.86) contrast(1.05) brightness(1.03);
         }
 
         .visual-frame::before,
@@ -343,61 +358,26 @@
 
         .visual-frame::before {
             background:
-                repeating-linear-gradient(90deg, rgba(49, 43, 34, 0.12) 0 1px, transparent 1px 44px),
-                repeating-linear-gradient(0deg, rgba(49, 43, 34, 0.08) 0 1px, transparent 1px 44px),
-                radial-gradient(rgba(49, 43, 34, 0.18) 1px, transparent 1px);
-            background-size: auto, auto, 28px 28px;
-            mix-blend-mode: multiply;
-            opacity: 0.34;
+                linear-gradient(145deg, rgba(255, 253, 247, 0.18), rgba(255, 253, 247, 0.42)),
+                radial-gradient(circle at 28% 18%, rgba(184, 119, 85, 0.18), transparent 28%),
+                radial-gradient(circle at 75% 30%, rgba(128, 147, 111, 0.22), transparent 30%),
+                linear-gradient(180deg, rgba(53, 74, 57, 0.02), rgba(49, 43, 34, 0.2));
+            mix-blend-mode: soft-light;
+            opacity: 0.88;
         }
 
         .visual-frame::after {
-            border: 12px solid rgba(255, 253, 247, 0.28);
-            box-shadow: inset 0 0 0 1px rgba(87, 72, 54, 0.15);
+            border: 12px solid rgba(255, 253, 247, 0.24);
+            box-shadow:
+                inset 0 0 0 1px rgba(87, 72, 54, 0.15),
+                inset 0 -120px 120px rgba(49, 43, 34, 0.2);
         }
-
-        .visual-orbit {
-            position: absolute;
-            border: 1px solid rgba(53, 74, 57, 0.22);
-            border-radius: 999px;
-            animation: drift 9s ease-in-out infinite alternate;
-        }
-
-        .visual-orbit.one {
-            right: 10%;
-            top: 12%;
-            width: 52%;
-            aspect-ratio: 1;
-            transform: rotate(-14deg);
-        }
-
-        .visual-orbit.two {
-            left: 8%;
-            bottom: 16%;
-            width: 42%;
-            aspect-ratio: 1;
-            animation-delay: -3s;
-        }
-
-        .node {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            border-radius: 999px;
-            background: var(--clay-bright);
-            box-shadow: 0 0 0 8px rgba(184, 119, 85, 0.13), 0 14px 30px rgba(49, 43, 34, 0.2);
-        }
-
-        .node.one { left: 17%; top: 24%; }
-        .node.two { right: 20%; top: 34%; background: var(--leaf); }
-        .node.three { left: 34%; bottom: 20%; background: var(--fern); }
-        .node.four { right: 16%; bottom: 18%; }
 
         .hero-panel {
             position: absolute;
             left: -28px;
             right: 28px;
-            bottom: 24px;
+            bottom: 18px;
             z-index: 2;
             padding: 18px;
             border: 1px solid rgba(87, 72, 54, 0.24);
@@ -449,11 +429,49 @@
             align-content: center;
             min-height: 100svh;
             overflow: hidden;
-            padding: 124px max(16px, calc((100% - 1180px) / 2)) 74px;
+            padding: 124px 0 74px;
             border-top: 1px solid var(--line);
             scroll-snap-align: start;
             scroll-snap-stop: always;
             isolation: isolate;
+        }
+
+        .section-inner {
+            position: relative;
+            z-index: 2;
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .hero {
+            padding-right: max(16px, calc((100% - 1180px) / 2));
+            padding-left: max(16px, calc((100% - 1180px) / 2));
+        }
+
+        .section-full {
+            background:
+                var(--section-bg-image, linear-gradient(135deg, rgba(240, 238, 233, 0.18), rgba(240, 238, 233, 0.5))),
+                radial-gradient(circle at 13% 20%, var(--section-glow-a, rgba(0, 217, 255, 0.42)), transparent 34%),
+                radial-gradient(circle at 82% 70%, var(--section-glow-b, rgba(255, 46, 136, 0.34)), transparent 38%),
+                linear-gradient(135deg, var(--section-bg-a, var(--cloud-dancer)), var(--section-bg-b, var(--signal-cyan)));
+            background-position: center;
+            background-size: cover;
+        }
+
+        .section-full .section-inner {
+            width: 100%;
+            max-width: 1180px;
+            padding: 0 16px;
+        }
+
+        .section-full .section-copy,
+        .section-full .card,
+        .section-full .expertise-card,
+        .section-full .mosaic-card,
+        .section-full .contact-row {
+            background-color: rgba(240, 238, 233, 0.78);
+            border-color: rgba(16, 32, 26, 0.14);
+            box-shadow: 0 22px 56px rgba(16, 32, 26, 0.13);
         }
 
         section::before {
@@ -472,79 +490,126 @@
             position: absolute;
             right: max(-120px, calc((100% - 1180px) / 2 - 180px));
             top: 50%;
-            z-index: -1;
+            z-index: 0;
             width: min(620px, 58vw);
             height: min(560px, 62vh);
-            border: 1px solid rgba(87, 72, 54, 0.16);
+            border: 1px solid rgba(255, 255, 255, 0.36);
             border-radius: 8px;
             background:
-                var(--scene-image, linear-gradient(135deg, rgba(255, 253, 247, 0.18), rgba(255, 253, 247, 0.48))),
-                radial-gradient(circle at 28% 24%, var(--scene-a, rgba(184, 119, 85, 0.28)), transparent 30%),
-                radial-gradient(circle at 72% 34%, var(--scene-b, rgba(105, 113, 90, 0.26)), transparent 32%),
-                linear-gradient(135deg, var(--scene-c, rgba(255, 253, 247, 0.74)), rgba(255, 253, 247, 0.32));
+                var(--scene-image, linear-gradient(135deg, rgba(240, 238, 233, 0.2), rgba(240, 238, 233, 0.46))),
+                radial-gradient(circle at 28% 24%, var(--scene-a, rgba(0, 217, 255, 0.34)), transparent 30%),
+                radial-gradient(circle at 72% 34%, var(--scene-b, rgba(255, 46, 136, 0.3)), transparent 32%),
+                linear-gradient(135deg, var(--scene-c, rgba(215, 255, 47, 0.42)), rgba(240, 238, 233, 0.28));
             background-position: center;
             background-size: cover;
             box-shadow: var(--shadow-strong);
             transform: translateY(-50%) rotate(var(--scene-tilt, -3deg));
-            opacity: 0.82;
+            opacity: 0.9;
         }
 
-        section:not(.hero) > * {
-            position: relative;
-            z-index: 2;
+        .section-full::after {
+            width: min(760px, 64vw);
+            height: min(660px, 70vh);
+            opacity: 0.72;
+            filter: saturate(1.22);
         }
 
-        /* Replace any --scene-image gradient with url("assets/your-ai-image.webp") when ready. */
+        .section-limited::after {
+            opacity: 0.6;
+        }
+
+        .section-full .section-title {
+            color: var(--poster-ink);
+        }
+
+        .section-full .section-title {
+            max-width: 14ch;
+        }
+
+        .section-full .section-copy {
+            width: min(58rem, 100%);
+            padding: 16px 18px;
+            border: 1px solid rgba(16, 32, 26, 0.12);
+            border-radius: 8px;
+            -webkit-backdrop-filter: blur(16px) saturate(120%);
+            backdrop-filter: blur(16px) saturate(120%);
+        }
+
+        /* Replace gradients with local AI assets, e.g. --section-bg-image: url("assets/expertise-bg.webp"). */
         #about {
-            --scene-image: linear-gradient(135deg, rgba(184, 119, 85, 0.32), rgba(247, 244, 237, 0.72));
-            --scene-a: rgba(184, 119, 85, 0.3);
-            --scene-b: rgba(53, 74, 57, 0.22);
-            --scene-c: rgba(255, 253, 247, 0.72);
+            --section-bg-image: linear-gradient(135deg, rgba(0, 217, 255, 0.52), rgba(255, 46, 136, 0.38));
+            --section-bg-a: #00d9ff;
+            --section-bg-b: #ff2e88;
+            --section-glow-a: rgba(215, 255, 47, 0.44);
+            --section-glow-b: rgba(112, 71, 255, 0.34);
+            --scene-image: linear-gradient(135deg, rgba(215, 255, 47, 0.62), rgba(240, 238, 233, 0.38));
+            --scene-a: rgba(18, 87, 255, 0.34);
+            --scene-b: rgba(255, 46, 136, 0.34);
+            --scene-c: rgba(240, 238, 233, 0.64);
             --scene-tilt: -4deg;
         }
 
-        #skills {
-            --scene-image: linear-gradient(135deg, rgba(105, 113, 90, 0.36), rgba(255, 253, 247, 0.64));
-            --scene-a: rgba(53, 74, 57, 0.25);
-            --scene-b: rgba(184, 119, 85, 0.24);
-            --scene-c: rgba(238, 230, 217, 0.68);
+        #science {
+            --scene-image: linear-gradient(135deg, rgba(0, 217, 255, 0.28), rgba(240, 238, 233, 0.64));
+            --scene-a: rgba(18, 87, 255, 0.24);
+            --scene-b: rgba(215, 255, 47, 0.26);
+            --scene-c: rgba(240, 238, 233, 0.68);
             --scene-tilt: 3deg;
         }
 
         #expertise {
-            --scene-image: linear-gradient(135deg, rgba(53, 74, 57, 0.3), rgba(184, 119, 85, 0.22));
-            --scene-a: rgba(128, 147, 111, 0.35);
-            --scene-b: rgba(155, 102, 74, 0.28);
-            --scene-c: rgba(255, 253, 247, 0.58);
+            --section-bg-image: linear-gradient(135deg, rgba(112, 71, 255, 0.56), rgba(18, 87, 255, 0.42));
+            --section-bg-a: #7047ff;
+            --section-bg-b: #1257ff;
+            --section-glow-a: rgba(0, 217, 255, 0.38);
+            --section-glow-b: rgba(215, 255, 47, 0.32);
+            --scene-image: linear-gradient(135deg, rgba(255, 46, 136, 0.44), rgba(0, 217, 255, 0.32));
+            --scene-a: rgba(215, 255, 47, 0.36);
+            --scene-b: rgba(240, 238, 233, 0.34);
+            --scene-c: rgba(16, 32, 26, 0.14);
             --scene-tilt: -2deg;
         }
 
         #experience {
-            --scene-image: linear-gradient(135deg, rgba(111, 89, 68, 0.28), rgba(247, 244, 237, 0.66));
-            --scene-a: rgba(155, 102, 74, 0.28);
-            --scene-b: rgba(105, 113, 90, 0.32);
-            --scene-c: rgba(255, 253, 247, 0.62);
-            --scene-tilt: 2deg;
-        }
-
-        #education {
-            --scene-image: linear-gradient(135deg, rgba(128, 147, 111, 0.3), rgba(238, 230, 217, 0.72));
-            --scene-a: rgba(53, 74, 57, 0.2);
-            --scene-b: rgba(184, 119, 85, 0.24);
-            --scene-c: rgba(255, 253, 247, 0.7);
+            --scene-image: linear-gradient(135deg, rgba(215, 255, 47, 0.28), rgba(240, 238, 233, 0.72));
+            --scene-a: rgba(0, 217, 255, 0.2);
+            --scene-b: rgba(112, 71, 255, 0.24);
+            --scene-c: rgba(240, 238, 233, 0.7);
             --scene-tilt: -5deg;
         }
 
-        #contact {
-            --scene-image: linear-gradient(135deg, rgba(184, 119, 85, 0.34), rgba(105, 113, 90, 0.3));
-            --scene-a: rgba(184, 119, 85, 0.34);
-            --scene-b: rgba(53, 74, 57, 0.28);
-            --scene-c: rgba(255, 253, 247, 0.58);
-            --scene-tilt: 4deg;
+        #art {
+            --section-bg-image: linear-gradient(135deg, rgba(255, 46, 136, 0.48), rgba(215, 255, 47, 0.3));
+            --section-bg-a: #ff2e88;
+            --section-bg-b: #d7ff2f;
+            --section-glow-a: rgba(112, 71, 255, 0.32);
+            --section-glow-b: rgba(0, 217, 255, 0.28);
+            --scene-image: linear-gradient(135deg, rgba(240, 238, 233, 0.56), rgba(255, 46, 136, 0.24));
+            --scene-a: rgba(112, 71, 255, 0.22);
+            --scene-b: rgba(18, 87, 255, 0.18);
+            --scene-c: rgba(215, 255, 47, 0.28);
+            --scene-tilt: -2deg;
         }
 
-        #skills::after,
+        #education {
+            --scene-image: linear-gradient(135deg, rgba(240, 238, 233, 0.62), rgba(0, 217, 255, 0.22));
+            --scene-a: rgba(18, 87, 255, 0.24);
+            --scene-b: rgba(255, 46, 136, 0.2);
+            --scene-c: rgba(215, 255, 47, 0.24);
+            --scene-tilt: 2deg;
+        }
+
+        #contact {
+            --scene-image: linear-gradient(135deg, rgba(240, 238, 233, 0.62), rgba(0, 217, 255, 0.22));
+            --scene-a: rgba(18, 87, 255, 0.24);
+            --scene-b: rgba(255, 46, 136, 0.2);
+            --scene-c: rgba(215, 255, 47, 0.24);
+            --scene-tilt: 2deg;
+        }
+
+        #science::after,
         #experience::after,
+        #education::after,
         #contact::after {
             right: auto;
             left: max(-120px, calc((100% - 1180px) / 2 - 180px));
@@ -559,14 +624,6 @@
             font-weight: 650;
             line-height: 1.12;
             letter-spacing: 0;
-        }
-
-        .section-number {
-            color: var(--clay);
-            font-family: "Inter", Arial, sans-serif;
-            font-size: 0.74rem;
-            font-weight: 800;
-            text-transform: uppercase;
         }
 
         .section-copy {
@@ -590,6 +647,7 @@
         .card,
         .skill-panel,
         .expertise-card,
+        .mosaic-card,
         .timeline-item,
         .contact-row {
             border: 1px solid var(--line);
@@ -607,6 +665,7 @@
         }
 
         .card:hover,
+        .mosaic-card:hover,
         .expertise-card:hover {
             transform: translateY(-4px);
             border-color: rgba(155, 102, 74, 0.4);
@@ -700,8 +759,12 @@
             height: 100%;
             border-radius: inherit;
             background: linear-gradient(90deg, var(--leaf), var(--fern), var(--clay-bright));
-            animation: fill-meter 900ms ease both;
+            transform: scaleX(0);
             transform-origin: left;
+        }
+
+        #education.is-visible .meter i {
+            animation: fill-meter 900ms ease both;
         }
 
         .expertise-grid {
@@ -777,6 +840,128 @@
             color: var(--soil);
             font-size: 0.82rem;
             font-weight: 700;
+        }
+
+        .mosaic-grid {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            grid-auto-rows: minmax(190px, auto);
+            gap: 16px;
+        }
+
+        .mosaic-card {
+            position: relative;
+            grid-column: span 2;
+            overflow: hidden;
+            padding: 24px;
+            transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .mosaic-card.large {
+            grid-column: span 3;
+            grid-row: span 2;
+        }
+
+        .mosaic-card.tall {
+            grid-column: span 3;
+        }
+
+        .art-grid .mosaic-card:nth-child(4) {
+            grid-column: span 3;
+        }
+
+        .mosaic-card::before {
+            content: "";
+            position: absolute;
+            right: -46px;
+            bottom: -46px;
+            width: 150px;
+            aspect-ratio: 1;
+            border: 1px solid rgba(155, 102, 74, 0.22);
+            border-radius: 999px;
+            background: repeating-radial-gradient(circle, transparent 0 12px, rgba(105, 113, 90, 0.13) 13px 14px);
+        }
+
+        .mosaic-card h3,
+        .mosaic-card p {
+            position: relative;
+        }
+
+        .mosaic-card h3 {
+            max-width: 18rem;
+            margin-bottom: 12px;
+            font-size: 1.34rem;
+            line-height: 1.14;
+        }
+
+        .mosaic-card p {
+            color: var(--bark);
+        }
+
+        .education-headings,
+        .education-skills {
+            display: grid;
+            grid-template-columns: minmax(0, 0.95fr) minmax(280px, 1.05fr);
+            gap: 20px;
+        }
+
+        .education-headings {
+            align-items: start;
+        }
+
+        .education-skills {
+            align-items: stretch;
+        }
+
+        .education-headings .section-title {
+            margin-bottom: 0;
+        }
+
+        .education-headings {
+            margin-bottom: 16px;
+        }
+
+        .education-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .education-side {
+            display: grid;
+            gap: 14px;
+        }
+
+        .education-skills .skill-bars,
+        .interests-panel {
+            padding: 22px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(255, 253, 247, 0.6);
+            box-shadow: 0 10px 30px rgba(55, 45, 34, 0.05);
+            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
+        }
+
+        .interests-block {
+            display: grid;
+            gap: 16px;
+        }
+
+        .interests-block .section-title {
+            margin-bottom: 0;
+        }
+
+        .interests-panel .chips {
+            margin-top: 0;
+        }
+
+        .interests-panel {
+            min-height: 112px;
+        }
+
+        .certifications-card {
+            align-self: end;
+            min-height: 112px;
         }
 
         .timeline {
@@ -870,10 +1055,34 @@
             to { transform: translate3d(10px, -14px, 0) rotate(8deg); }
         }
 
+        .type-cursor {
+            display: inline-block;
+            margin-right: 0.08em;
+            animation: single-blink-cursor 900ms steps(1, end) 1;
+        }
+
+        .section-title.is-title-typing {
+            display: block;
+        }
+
+        .hero-name .name-word {
+            display: block;
+            min-height: 0.74em;
+        }
+
+        @keyframes single-blink-cursor {
+            0%,
+            49% { opacity: 1; }
+            50%,
+            100% { opacity: 0; }
+        }
+
         @media (max-width: 980px) {
             .hero,
             .contact-grid,
             .columns,
+            .education-headings,
+            .education-skills,
             .skill-layout,
             .timeline-item {
                 grid-template-columns: 1fr;
@@ -889,28 +1098,38 @@
             }
 
             .hero-visual {
-                min-height: auto;
+                min-height: 0;
+                padding-bottom: 170px;
             }
 
             .visual-frame {
-                min-height: 380px;
+                width: min(380px, 100%);
+                margin-right: auto;
+                transform: translateY(-12px);
             }
 
             .hero-panel {
-                position: relative;
-                left: auto;
-                right: auto;
-                bottom: auto;
-                margin-top: 14px;
+                left: 12px;
+                right: 12px;
+                bottom: 20px;
+                margin-top: 0;
             }
 
             .expertise-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
+            .mosaic-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
             .expertise-card,
             .expertise-card:nth-child(1),
-            .expertise-card:nth-child(2) {
+            .expertise-card:nth-child(2),
+            .mosaic-card,
+            .mosaic-card.large,
+            .mosaic-card.tall,
+            .art-grid .mosaic-card:nth-child(4) {
                 grid-column: span 1;
             }
 
@@ -918,10 +1137,13 @@
                 flex-direction: column;
                 align-items: flex-start;
                 top: 8px;
+                max-height: calc(100svh - 16px);
+                overflow: auto;
             }
 
             .nav {
                 justify-content: flex-start;
+                row-gap: 6px;
             }
 
             .timeline {
@@ -951,13 +1173,34 @@
 
         @media (max-width: 640px) {
             .page {
-                width: min(100% - 20px, 1180px);
+                width: 100%;
             }
 
             section,
             .hero {
                 padding-right: 10px;
                 padding-left: 10px;
+            }
+
+            .section-full .section-inner {
+                width: 100%;
+                padding-right: 0;
+                padding-left: 0;
+            }
+
+            section:not(.hero)::after {
+                width: 86vw;
+                height: 42vh;
+                right: -26vw;
+                top: 64%;
+            }
+
+            #science::after,
+            #experience::after,
+            #education::after,
+            #contact::after {
+                left: -26vw;
+                right: auto;
             }
 
             h1 {
@@ -974,7 +1217,8 @@
             }
 
             .stat-grid,
-            .expertise-grid {
+            .expertise-grid,
+            .mosaic-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -999,6 +1243,11 @@
                 animation-iteration-count: 1 !important;
                 transition-duration: 1ms !important;
             }
+
+            .meter i {
+                animation: none !important;
+                transform: scaleX(1);
+            }
         }
     </style>
 </head>
@@ -1006,30 +1255,30 @@
     <main class="page">
         <header class="topbar">
             <div class="brand">
-                <span>Personal Website</span>
+                <span>Majid Vafadar</span>
             </div>
             <nav class="nav" aria-label="Primary">
-                <a href="#home">Home</a>
                 <a href="#about">About</a>
-                <a href="#skills">Skills</a>
                 <a href="#expertise">Expertise</a>
                 <a href="#experience">Experience</a>
                 <a href="#education">Education</a>
+                <a href="#science">Science</a>
+                <a href="#art">Art</a>
                 <a href="#contact">Contact</a>
             </nav>
         </header>
 
-        <section class="hero" id="home" aria-labelledby="hero-title">
+        <section class="hero section-limited" id="about" aria-labelledby="hero-title">
             <div class="hero-copy">
                 <p class="eyebrow">Berlin, Germany</p>
                 <p class="hero-name">Majid Vafadar</p>
                 <h1 id="hero-title">
-                    Data Architect, <span>Bioinformatician</span>, and Data Scientist.
+                    I work across science & engineering, while being an <span>artist</span>.
                 </h1>
                 <p class="lead">
-                    I build practical data systems across biology, genomics, and analytics. My background combines
-                    information systems engineering, data architecture, ETL pipelines, and scientific workflows, with
-                    more than 15 years of experience in software and data work.
+                    My work moves between biological data, information systems, and artistic practice. I build durable
+                    data systems, explore scientific questions, and keep a creative practice across poetry, performance,
+                    and video.
                 </p>
                 <div class="actions">
                     <a class="button" href="mailto:m.vafadar@pm.me">Contact me</a>
@@ -1037,287 +1286,326 @@
                     <a class="button secondary" href="https://www.linkedin.com/in/mvafadar" target="_blank" rel="noreferrer">LinkedIn</a>
                 </div>
             </div>
-            <div class="hero-visual" aria-label="Abstract biological data visual">
-                <!-- Optional AI image prompt for assets/hero-data-visual.webp:
-                Abstract scientific data portrait background, biological networks, genomics patterns, warm paper texture,
-                muted moss green, clay, cream, elegant editorial portfolio style, subtle depth, no text, no logos. -->
-                <div class="visual-frame" aria-hidden="true">
-                    <span class="visual-orbit one"></span>
-                    <span class="visual-orbit two"></span>
-                    <span class="node one"></span>
-                    <span class="node two"></span>
-                    <span class="node three"></span>
-                    <span class="node four"></span>
+            <div class="hero-visual" aria-label="Portrait of Majid Vafadar">
+                <div class="visual-frame portrait-frame">
+                    <img src="files/mj3.jpg" alt="Portrait of Majid Vafadar">
                 </div>
                 <aside class="hero-panel" aria-label="Highlights">
-                    <div class="panel-title">At a glance</div>
+                    <div class="panel-title">I am ...</div>
                     <div class="stat-grid">
                         <div class="stat">
-                            <strong>15+ years</strong>
-                            <span>Software, data, and scientific systems work.</span>
+                            <strong>An engineer</strong>
+                            <span>Data architecture, information systems, data engineering, and AI engineering.</span>
                         </div>
-                        <div class="stat">
-                            <strong>Berlin based</strong>
-                            <span>Research data architecture with an international profile.</span>
+                                                <div class="stat">
+                            <strong>A Scientist</strong>
+                            <span>Research, biological data, genomics, metabarcoding, and machine learning.</span>
                         </div>
+
                         <div class="stat">
-                            <strong>Bio/data</strong>
-                            <span>Genomics, pipelines, analytics, and visualization.</span>
+                            <strong>An Artist</strong>
+                            <span>Poetry, performance art, film.</span>
                         </div>
                     </div>
                 </aside>
             </div>
         </section>
 
-        <section id="about" aria-labelledby="about-title">
-            <h2 class="section-title" id="about-title"><span class="section-number">01 / Profile</span>About</h2>
-            <p class="section-copy">
-                An experienced information system engineer and architect on biological and NGS data, including
-                genomics, phylogenetics, and metabarcoding. I like turning complex data into systems that people can
-                actually use, trust, and maintain.
-            </p>
-            <div class="columns">
-                <article class="card">
-                    <h3>What I optimize for</h3>
-                    <p>Useful systems, clear data flow, and work that is easy for the next engineer to understand.</p>
-                </article>
-                <article class="card">
-                    <h3>How I work</h3>
-                    <p>Calmly, with structure, and with enough detail to keep technical work durable over time.</p>
-                </article>
-                <article class="card">
-                    <h3>What I want to build</h3>
-                    <p>Modern data platforms, scientific workflows, and tools that make complex work easier to trust.</p>
-                </article>
-            </div>
-        </section>
+        <section class="section-full" id="expertise" aria-labelledby="expertise-title">
+            <div class="section-inner">
+                <h2 class="section-title" id="expertise-title">Area of Expertise</h2>
+                <p class="section-copy">
+                    As a product owner of scientific data infrastructures and information systems,
+                    I follow enginnering practices and scientific standards to provide meaningful data and information with effiecency.
+                    
+                </p>
+                <div class="expertise-grid">
+                    <article class="expertise-card">
+                        <p class="domain-kicker">Data Architecture</p>
+                        <h3>Enterprise data structures and platform design</h3>
+                        <p>
+                            Data architecture work around long-lived systems, integrations, and schemas that need
+                            to support both operational use and downstream analytics.
+                        </p>
+                        <ul class="mini-list">
+                            <li>ETL</li>
+                            <li>Modeling</li>
+                            <li>Migration</li>
+                            <li>Ownership</li>
+                        </ul>
+                    </article>
 
-        <section id="skills" aria-labelledby="skills-title">
-            <h2 class="section-title" id="skills-title"><span class="section-number">02 / Stack</span>Top Skills</h2>
-            <div class="skill-layout">
-                <div class="skill-panel">
-                    <h3>Systems that make scientific data easier to trust.</h3>
-                    <p>
-                        A practical mix of data systems, scientific computing, and analytics work, shaped by long-running
-                        projects where clarity, reproducibility, and maintainability matter.
-                    </p>
-                    <ul class="chips">
-                        <li>Genomics</li>
-                        <li>ETL Pipelines</li>
-                        <li>Visualization</li>
-                        <li>Information Systems</li>
-                    </ul>
+                    <article class="expertise-card">
+                        <p class="domain-kicker">Bioinformatics</p>
+                        <h3>NGS, genomics, phylogenetics, and metabarcoding</h3>
+                        <p>
+                            Bioinformatics and scientific data work focused on biological analysis pipelines,
+                            reproducible processing, and visualization for NGS and related datasets.
+                        </p>
+                        <ul class="mini-list">
+                            <li>Genomics</li>
+                            <li>Metabarcoding</li>
+                            <li>NGS</li>
+                            <li>Workflows</li>
+                        </ul>
+                    </article>
+
+                    <article class="expertise-card">
+                        <p class="domain-kicker">Data Engineering</p>
+                        <h3>Pipeline design, migration, and platform glue</h3>
+                        <p>
+                            Data engineering for integrating independent systems, building ETL pipelines, and
+                            making information flow predictable across teams and tools.
+                        </p>
+                        <ul class="mini-list">
+                            <li>Integration</li>
+                            <li>Automation</li>
+                            <li>Django</li>
+                            <li>Portals</li>
+                        </ul>
+                    </article>
+
+                    <article class="expertise-card">
+                        <p class="domain-kicker">Analytics</p>
+                        <h3>Dashboards, reports, and decision support</h3>
+                        <p>
+                            Building dashboards and reporting interfaces for scientists, researchers, and
+                            organizations that need data to be understandable, not just available.
+                        </p>
+                        <ul class="mini-list">
+                            <li>Dashboards</li>
+                            <li>Reports</li>
+                            <li>Tableau</li>
+                            <li>Decision support</li>
+                        </ul>
+                    </article>
+
+                    <article class="expertise-card">
+                        <p class="domain-kicker">Machine Learning</p>
+                        <h3>Modeling, learning systems, and data science</h3>
+                        <p>
+                            Machine learning sits alongside the rest of the stack, supporting exploratory analysis,
+                            applied data science, and pattern discovery in larger systems.
+                        </p>
+                        <ul class="mini-list">
+                            <li>CNN</li>
+                            <li>RNN</li>
+                            <li>Time Series Prediction</li>
+                            <li>Bioinformatics Tools</li>
+                        </ul>
+                    </article>
                 </div>
-                <div class="skill-bars" aria-label="Skill focus areas">
-                    <div class="skill-bar">
-                        <span><strong>Data Architecture</strong><em>Core</em></span>
-                        <div class="meter"><i style="--level: 94%"></i></div>
-                    </div>
-                    <div class="skill-bar">
-                        <span><strong>Bioinformatics and NGS</strong><em>Core</em></span>
-                        <div class="meter"><i style="--level: 90%"></i></div>
-                    </div>
-                    <div class="skill-bar">
-                        <span><strong>Data Engineering</strong><em>Strong</em></span>
-                        <div class="meter"><i style="--level: 88%"></i></div>
-                    </div>
-                    <div class="skill-bar">
-                        <span><strong>Analytics and Visualization</strong><em>Strong</em></span>
-                        <div class="meter"><i style="--level: 82%"></i></div>
-                    </div>
-                    <div class="skill-bar">
-                        <span><strong>Machine Learning</strong><em>Applied</em></span>
-                        <div class="meter"><i style="--level: 74%"></i></div>
-                    </div>
+            </div>
+        </section>
+
+        <section class="section-full" id="experience" aria-labelledby="experience-title">
+            <div class="section-inner">
+                <h2 class="section-title" id="experience-title">Experience</h2>
+                <p class="section-copy">
+                    Research, data, and software roles across Berlin and earlier engineering work in Iran.
+                </p>
+                <div class="timeline">
+                    <article class="timeline-item">
+                        <div class="timeline-time">Aug 2020 - Present</div>
+                        <div>
+                            <h3>Museum fur Naturkunde</h3>
+                            <p>Data Architect, Berlin, Germany. Working on biological data systems and architecture.</p>
+                        </div>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="timeline-time">Apr 2019 - Oct 2019</div>
+                        <div>
+                            <h3>Leibniz Institute for Zoo and Wildlife Research</h3>
+                            <p>Bioinformatician, Berlin Area. Data engineering in metagenomics and metabarcoding pipelines using ETL, plus biological data visualization.</p>
+                        </div>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="timeline-time">Apr 2018 - Mar 2019</div>
+                        <div>
+                            <h3>Berlin Center for Genomics in Biodiversity Research</h3>
+                            <p>Bioinformatician, Berlin Area. DNA metabarcoding data analysis, metagenomics, and de novo genome assembly support for the Vertebrate Genome Project.</p>
+                        </div>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="timeline-time">Jan 2017 - Mar 2019</div>
+                        <div>
+                            <h3>Max Planck Institute for the History of Science</h3>
+                            <p>Data Engineer and Software Developer, Berlin Area. ETL pipelines, data migration, data architecture, and Django-based dashboards for researchers.</p>
+                        </div>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="timeline-time">Jan 2011 - Jun 2015</div>
+                        <div>
+                            <h3>Negar Co</h3>
+                            <p>Data Analyst and Software Developer, Iran. Information systems, dashboards, analytics reports, data visualization, UML process modeling, and business process re-engineering support.</p>
+                        </div>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="timeline-time">Jan 2009 - Jan 2011</div>
+                        <div>
+                            <h3>Hoze Honari</h3>
+                            <p>Data Engineer, Iran. Integrated more than 10 subsystems into a single portal covering planning, budgeting, ticketing, and artist evaluation.</p>
+                        </div>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="timeline-time">Jan 2008 - Jan 2009</div>
+                        <div>
+                            <h3>ATM Iran</h3>
+                            <p>Back End Developer. Built an automation system for ATM troubleshooting service and support.</p>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section id="expertise" aria-labelledby="expertise-title">
-            <h2 class="section-title" id="expertise-title"><span class="section-number">03 / Practice</span>Expertise</h2>
-            <p class="section-copy">
-                Work across biological data, research platforms, and applied analytics, with an emphasis on systems
-                that remain legible after the first launch.
-            </p>
-            <div class="expertise-grid">
-                <article class="expertise-card">
-                    <p class="domain-kicker">01 / Data Architecture</p>
-                    <h3>Enterprise data structures and platform design</h3>
-                    <p>
-                        Data architecture work around long-lived systems, integrations, and schemas that need to support
-                        both operational use and downstream analytics.
-                    </p>
-                    <ul class="mini-list">
-                        <li>ETL</li>
-                        <li>Modeling</li>
-                        <li>Migration</li>
-                        <li>Ownership</li>
-                    </ul>
-                </article>
-
-                <article class="expertise-card">
-                    <p class="domain-kicker">02 / Bioinformatics</p>
-                    <h3>NGS, genomics, phylogenetics, and metabarcoding</h3>
-                    <p>
-                        Bioinformatics and scientific data work focused on biological analysis pipelines, reproducible
-                        processing, and visualization for NGS and related datasets.
-                    </p>
-                    <ul class="mini-list">
-                        <li>Genomics</li>
-                        <li>Metabarcoding</li>
-                        <li>NGS</li>
-                        <li>Workflows</li>
-                    </ul>
-                </article>
-
-                <article class="expertise-card">
-                    <p class="domain-kicker">03 / Data Engineering</p>
-                    <h3>Pipeline design, migration, and platform glue</h3>
-                    <p>
-                        Data engineering for integrating independent systems, building ETL pipelines, and making
-                        information flow predictable across teams and tools.
-                    </p>
-                    <ul class="mini-list">
-                        <li>Integration</li>
-                        <li>Automation</li>
-                        <li>Django</li>
-                        <li>Portals</li>
-                    </ul>
-                </article>
-
-                <article class="expertise-card">
-                    <p class="domain-kicker">04 / Analytics</p>
-                    <h3>Dashboards, reports, and decision support</h3>
-                    <p>
-                        Building dashboards and reporting interfaces for scientists, researchers, and organizations that
-                        need data to be understandable, not just available.
-                    </p>
-                    <ul class="mini-list">
-                        <li>Dashboards</li>
-                        <li>Reports</li>
-                        <li>Tableau</li>
-                        <li>Decision support</li>
-                    </ul>
-                </article>
-
-                <article class="expertise-card">
-                    <p class="domain-kicker">05 / Machine Learning</p>
-                    <h3>Modeling, learning systems, and data science</h3>
-                    <p>
-                        Machine learning sits alongside the rest of the stack, supporting exploratory analysis, applied
-                        data science, and pattern discovery in larger systems.
-                    </p>
-                    <ul class="mini-list">
-                        <li>Classification</li>
-                        <li>Data science</li>
-                        <li>Pattern discovery</li>
-                        <li>Signal</li>
-                    </ul>
-                </article>
-            </div>
-        </section>
-
-        <section id="experience" aria-labelledby="experience-title">
-            <h2 class="section-title" id="experience-title"><span class="section-number">04 / Timeline</span>Experience</h2>
-            <p class="section-copy">
-                Research, data, and software roles across Berlin and earlier engineering work in Iran.
-            </p>
-            <div class="timeline">
-                <article class="timeline-item">
-                    <div class="timeline-time">Aug 2020 - Present</div>
-                    <div>
-                        <h3>Museum fur Naturkunde</h3>
-                        <p>Data Architect, Berlin, Germany. Working on biological data systems and architecture.</p>
+        <section class="section-limited" id="education" aria-labelledby="education-title">
+            <div class="section-inner">
+                <div class="education-headings">
+                    <h2 class="section-title" id="education-title">Education</h2>
+                    <h2 class="section-title">Skills</h2>
+                </div>
+                <div class="education-skills">
+                    <div class="education-list">
+                        <article class="card">
+                            <h3>Freie Universitat Berlin</h3>
+                            <p>Master of Science (MSc), Bioinformatics & Microbiology, 2015 - 2018.</p>
+                        </article>
+                        <article class="card">
+                            <h3>Tehran University</h3>
+                            <p>University Diploma in Sociology, 2011 - 2012.</p>
+                        </article>
+                        <article class="card">
+                            <h3>Parand Azad University</h3>
+                            <p>Bachelor of Engineering (B.E.), Information Technology, 2004 - 2010.</p>
+                        </article>
                     </div>
-                </article>
-                <article class="timeline-item">
-                    <div class="timeline-time">Apr 2019 - Oct 2019</div>
-                    <div>
-                        <h3>Leibniz Institute for Zoo and Wildlife Research</h3>
-                        <p>Bioinformatician, Berlin Area. Data engineering in metagenomics and metabarcoding pipelines using ETL, plus biological data visualization.</p>
+                    <div class="education-side">
+                        <div class="skill-bars" aria-label="Skill focus areas">
+                            <div class="skill-bar">
+                                <span><strong>Software Developement</strong><em>Core</em></span>
+                                <div class="meter"><i style="--level: 94%"></i></div>
+                            </div>
+                            <div class="skill-bar">
+                                <span><strong>Data Architecture & Engineering</strong><em>Core</em></span>
+                                <div class="meter"><i style="--level: 90%"></i></div>
+                            </div>
+                            <div class="skill-bar">
+                                <span><strong>ML & AI Engineering</strong><em>Strong</em></span>
+                                <div class="meter"><i style="--level: 88%"></i></div>
+                            </div>
+                            <div class="skill-bar">
+                                <span><strong>Bioinformatics and NGS</strong><em>Strong</em></span>
+                                <div class="meter"><i style="--level: 82%"></i></div>
+                            </div>
+                            <div class="skill-bar">
+                                <span><strong>Product Ownership</strong><em>Applied</em></span>
+                                <div class="meter"><i style="--level: 74%"></i></div>
+                            </div>
+                        </div>
                     </div>
-                </article>
-                <article class="timeline-item">
-                    <div class="timeline-time">Apr 2018 - Mar 2019</div>
-                    <div>
-                        <h3>Berlin Center for Genomics in Biodiversity Research</h3>
-                        <p>Bioinformatician, Berlin Area. DNA metabarcoding data analysis, metagenomics, and de novo genome assembly support for the Vertebrate Genome Project.</p>
-                    </div>
-                </article>
-                <article class="timeline-item">
-                    <div class="timeline-time">Jan 2017 - Mar 2019</div>
-                    <div>
-                        <h3>Max Planck Institute for the History of Science</h3>
-                        <p>Data Engineer and Software Developer, Berlin Area. ETL pipelines, data migration, data architecture, and Django-based dashboards for researchers.</p>
-                    </div>
-                </article>
-                <article class="timeline-item">
-                    <div class="timeline-time">Jan 2011 - Jun 2015</div>
-                    <div>
-                        <h3>Negar Co</h3>
-                        <p>Data Analyst and Software Developer, Iran. Information systems, dashboards, analytics reports, data visualization, UML process modeling, and business process re-engineering support.</p>
-                    </div>
-                </article>
-                <article class="timeline-item">
-                    <div class="timeline-time">Jan 2009 - Jan 2011</div>
-                    <div>
-                        <h3>Hoze Honari</h3>
-                        <p>Data Engineer, Iran. Integrated more than 10 subsystems into a single portal covering planning, budgeting, ticketing, and artist evaluation.</p>
-                    </div>
-                </article>
-                <article class="timeline-item">
-                    <div class="timeline-time">Jan 2008 - Jan 2009</div>
-                    <div>
-                        <h3>ATM Iran</h3>
-                        <p>Back End Developer. Built an automation system for ATM troubleshooting service and support.</p>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section id="education" aria-labelledby="education-title">
-            <h2 class="section-title" id="education-title"><span class="section-number">05 / Formation</span>Education</h2>
-            <div class="columns">
-                <article class="card">
-                    <h3>Freie Universitat Berlin</h3>
-                    <p>Master of Science (MSc), Bioinformatics, 2015 - 2018.</p>
-                </article>
-                <article class="card">
-                    <h3>Parand Azad University</h3>
-                    <p>Bachelor of Engineering (B.E.), Information Technology, 2004 - 2010.</p>
-                </article>
-                <article class="card">
-                    <h3>Certifications</h3>
-                    <p>Duolingo German Fluency: Intermediate, Data Visualization in Tableau, Deep Learning A-Z, and The Data Science Course 2020.</p>
-                </article>
-            </div>
-        </section>
-
-        <section class="contact" id="contact" aria-labelledby="contact-title">
-            <div class="contact-grid">
-                <div>
-                    <h2 class="section-title" id="contact-title"><span class="section-number">06 / Signal</span>Contact</h2>
-                    <p class="section-copy">
-                        If you want to talk about data systems, analytics, or bioinformatics work, I’m easy to reach.
-                    </p>
-                    <div class="actions">
-                        <a class="button" href="mailto:m.vafadar@pm.me">m.vafadar@pm.me</a>
-                        <a class="button secondary" href="https://www.linkedin.com/in/mvafadar" target="_blank" rel="noreferrer">LinkedIn</a>
-                        <a class="button secondary" href="https://www.researchgate.net/profile/Majid_Vafadar" target="_blank" rel="noreferrer">ResearchGate</a>
+                    <article class="card certifications-card">
+                        <h3>Certifications</h3>
+                        <p>Data Science, Machine Learing Engineering, Deep Learning Engineer</p>
+                    </article>
+                    <div class="interests-block">
+                        <h2 class="section-title">Interests</h2>
+                        <article class="interests-panel">
+                            <ul class="chips">
+                                <li>Life Science</li>
+                                <li>Nutritional Science</li>
+                                <li>Psychoanalysis</li>
+                                <li>AI</li>
+                            </ul>
+                        </article>
                     </div>
                 </div>
-                <div class="contact-card">
-                    <div class="contact-row">
-                        <span>Location</span>
-                        <strong>Berlin, Berlin, Germany</strong>
+            </div>
+        </section>
+
+        <section class="section-limited" id="science" aria-labelledby="science-title">
+            <div class="section-inner">
+                <h2 class="section-title" id="science-title">Scientific Projects</h2>
+                <p class="section-copy">
+                    Scientific work organized around biological data, computational methods, and applied learning systems.
+                </p>
+                <div class="mosaic-grid">
+                    <article class="mosaic-card large">
+                        <p class="domain-kicker">Genomics</p>
+                        <h3>Genomics</h3>
+                        <p>Scientific projects around genome-scale biological data, analysis workflows, and research datasets.</p>
+                    </article>
+                    <article class="mosaic-card">
+                        <p class="domain-kicker">Metabarcoding</p>
+                        <h3>Metabarcoding</h3>
+                        <p>Work with biodiversity data, sequence processing, and biological interpretation pipelines.</p>
+                    </article>
+                    <article class="mosaic-card tall">
+                        <p class="domain-kicker">Machine Learning</p>
+                        <h3>Machine Learning</h3>
+                        <p>Applied learning methods for pattern discovery, classification, and data-driven scientific questions.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-full" id="art" aria-labelledby="art-title">
+            <div class="section-inner">
+                <h2 class="section-title" id="art-title">Art</h2>
+                <p class="section-copy">
+                    Artistic work gathered as a living practice across language, body, performance, and moving image.
+                </p>
+                <div class="mosaic-grid art-grid">
+                    <article class="mosaic-card large">
+                        <p class="domain-kicker">Poetry</p>
+                        <h3>Poetry</h3>
+                        <p>Writing, language, and poetic practice as a core artistic medium.</p>
+                    </article>
+                    <article class="mosaic-card tall">
+                        <p class="domain-kicker">Performance</p>
+                        <h3>Performance Art</h3>
+                        <p>Embodied and time-based artistic work.</p>
+                    </article>
+                    <article class="mosaic-card">
+                        <p class="domain-kicker">Moving Image</p>
+                        <h3>Movies / Video</h3>
+                        <p>Video and film-based work as part of an artistic career.</p>
+                    </article>
+                    <article class="mosaic-card">
+                        <p class="domain-kicker">Channel</p>
+                        <h3>YouTube</h3>
+                        <p>Published video work and public artistic presence online.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact section-limited" id="contact" aria-labelledby="contact-title">
+            <div class="section-inner">
+                <div class="contact-grid">
+                    <div>
+                        <h2 class="section-title" id="contact-title">Contact</h2>
+                        <p class="section-copy">
+                            If you want to talk about data systems, analytics, or bioinformatics work, I’m easy to reach.
+                        </p>
+                        <div class="actions">
+                            <a class="button" href="mailto:m.vafadar@pm.me">m.vafadar@pm.me</a>
+                            <a class="button secondary" href="https://www.linkedin.com/in/mvafadar" target="_blank" rel="noreferrer">LinkedIn</a>
+                            <a class="button secondary" href="https://www.researchgate.net/profile/Majid_Vafadar" target="_blank" rel="noreferrer">ResearchGate</a>
+                        </div>
                     </div>
-                    <div class="contact-row">
-                        <span>Languages</span>
-                        <strong>English, German, Arabic, Turkish, Persian</strong>
-                    </div>
-                    <div class="contact-row">
-                        <span>Profile</span>
-                        <strong>Data Architect | Bioinformatician | Data Scientist</strong>
+                    <div class="contact-card">
+                        <div class="contact-row">
+                            <span>Location</span>
+                            <strong>Berlin, Berlin, Germany</strong>
+                        </div>
+                        <div class="contact-row">
+                            <span>Languages</span>
+                            <strong>English, German, Arabic, Turkish, Persian</strong>
+                        </div>
+                        <div class="contact-row">
+                            <span>Profile</span>
+                            <strong>Data Architect | Bioinformatician | Data Scientist</strong>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1332,8 +1620,174 @@
         const sections = navLinks
             .map((link) => document.querySelector(link.getAttribute("href")))
             .filter(Boolean);
+        const sectionVisibility = new Map(sections.map((section) => [section.id, 0]));
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const titleCache = new WeakMap();
+        let activeSectionId = "";
+        let activeTitleSection = null;
+        let titleTypeRun = 0;
 
-        const setActiveLink = (id) => {
+        const getTitleElements = (section) => {
+            if (titleCache.has(section)) {
+                return titleCache.get(section);
+            }
+
+            const titleItems = Array.from(section.querySelectorAll(".section-title")).map((element) => ({
+                element,
+                text: element.textContent.trim(),
+            }));
+
+            if (section.id === "about") {
+                const heroName = section.querySelector(".hero-name");
+                if (heroName) {
+                    titleItems.unshift({
+                        element: heroName,
+                        text: heroName.textContent.trim(),
+                        isName: true,
+                    });
+                }
+            }
+
+            titleCache.set(section, titleItems);
+            return titleItems;
+        };
+
+        const restoreSectionTitles = (section) => {
+            getTitleElements(section).forEach(({ element, text, isName }) => {
+                element.classList.remove("is-title-typing");
+                if (isName) {
+                    element.classList.remove("is-name-typing");
+                    element.textContent = "";
+                    text.split(/\s+/).filter(Boolean).forEach((word) => {
+                        const wordElement = document.createElement("span");
+                        wordElement.className = "name-word";
+                        wordElement.textContent = word;
+                        element.append(wordElement);
+                    });
+                    return;
+                }
+                element.textContent = text;
+            });
+        };
+
+        const typeNameWords = (element, text, currentRun, speed) => {
+            const words = text.split(/\s+/).filter(Boolean);
+            const wordItems = words.map((word) => {
+                const wordElement = document.createElement("span");
+                const cursor = document.createElement("span");
+                const textNode = document.createTextNode("");
+
+                wordElement.className = "name-word";
+                cursor.className = "type-cursor";
+                cursor.setAttribute("aria-hidden", "true");
+                cursor.textContent = "|";
+                wordElement.append(cursor, textNode);
+                element.append(wordElement);
+
+                return {
+                    cursor,
+                    textNode,
+                    word,
+                    index: 0,
+                };
+            });
+
+            const typeNext = () => {
+                if (currentRun !== titleTypeRun) {
+                    return;
+                }
+
+                let isDone = true;
+
+                wordItems.forEach((item) => {
+                    if (item.index < item.word.length) {
+                        item.index += 1;
+                        item.textNode.nodeValue = item.word.slice(0, item.index);
+                    }
+
+                    if (item.index < item.word.length) {
+                        isDone = false;
+                    }
+                });
+
+                if (!isDone) {
+                    window.setTimeout(typeNext, speed);
+                } else {
+                    element.classList.remove("is-name-typing");
+                }
+            };
+
+            window.setTimeout(() => {
+                if (currentRun !== titleTypeRun) {
+                    return;
+                }
+
+                wordItems.forEach(({ cursor }) => cursor.remove());
+                typeNext();
+            }, 900);
+        };
+
+        const typeSectionTitles = (section) => {
+            if (prefersReducedMotion) {
+                restoreSectionTitles(section);
+                return;
+            }
+
+            if (activeTitleSection && activeTitleSection !== section) {
+                restoreSectionTitles(activeTitleSection);
+            }
+
+            activeTitleSection = section;
+            titleTypeRun += 1;
+            const currentRun = titleTypeRun;
+            const speed = 34;
+            const titleItems = getTitleElements(section);
+
+            titleItems.forEach(({ element, text, isName }) => {
+                let index = 0;
+                const textNode = document.createTextNode("");
+                const cursor = document.createElement("span");
+                cursor.className = "type-cursor";
+                cursor.setAttribute("aria-hidden", "true");
+                cursor.textContent = "|";
+
+                element.textContent = "";
+                if (isName) {
+                    element.classList.add("is-name-typing");
+                    typeNameWords(element, text, currentRun, speed);
+                    return;
+                }
+
+                element.classList.add("is-title-typing");
+                element.append(cursor, textNode);
+
+                const typeNext = () => {
+                    if (currentRun !== titleTypeRun) {
+                        return;
+                    }
+
+                    index = Math.min(index + 1, text.length);
+                    textNode.nodeValue = text.slice(0, index);
+
+                    if (index < text.length) {
+                        window.setTimeout(typeNext, speed);
+                    } else {
+                        element.classList.remove("is-title-typing");
+                    }
+                };
+
+                window.setTimeout(() => {
+                    if (currentRun !== titleTypeRun) {
+                        return;
+                    }
+
+                    cursor.remove();
+                    typeNext();
+                }, 900);
+            });
+        };
+
+        const setActiveLink = (id, options = {}) => {
             navLinks.forEach((link) => {
                 const isActive = link.getAttribute("href") === `#${id}`;
                 link.classList.toggle("is-active", isActive);
@@ -1343,22 +1797,48 @@
                     link.removeAttribute("aria-current");
                 }
             });
+
+            sections.forEach((section) => {
+                section.classList.toggle("is-visible", section.id === id);
+            });
+
+            const activeSection = document.getElementById(id);
+            if (activeSection && (activeSectionId !== id || options.forceType)) {
+                activeSectionId = id;
+                typeSectionTitles(activeSection);
+            }
         };
 
-        const observer = new IntersectionObserver((entries) => {
-            const active = entries
-                .filter((entry) => entry.isIntersecting)
-                .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        navLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                const target = document.querySelector(link.getAttribute("href"));
+                if (target) {
+                    setActiveLink(target.id, { forceType: true });
+                }
+            });
+        });
 
-            if (active) {
-                setActiveLink(active.target.id);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                sectionVisibility.set(entry.target.id, entry.isIntersecting ? entry.intersectionRatio : 0);
+            });
+
+            const active = sections
+                .map((section) => ({
+                    id: section.id,
+                    ratio: sectionVisibility.get(section.id) || 0,
+                }))
+                .sort((a, b) => b.ratio - a.ratio)[0];
+
+            if (active && active.ratio > 0.2) {
+                setActiveLink(active.id);
             }
         }, {
-            threshold: [0.45, 0.6, 0.75],
+            threshold: [0.2, 0.45, 0.6, 0.75],
         });
 
         sections.forEach((section) => observer.observe(section));
-        setActiveLink("home");
+        setActiveLink("about");
     </script>
 </body>
 </html>
