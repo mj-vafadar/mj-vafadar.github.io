@@ -1385,14 +1385,31 @@
 
             section,
             .hero {
+                width: 100%;
                 padding-right: 10px;
                 padding-left: 10px;
             }
 
+            .section-inner,
             .section-full .section-inner {
                 width: 100%;
+                max-width: none;
                 padding-right: 0;
                 padding-left: 0;
+            }
+
+            .card,
+            .skill-panel,
+            .expertise-card,
+            .mosaic-card,
+            .timeline-item,
+            .contact-row,
+            .education-list,
+            .education-side,
+            .certifications-block,
+            .interests-block {
+                width: 100%;
+                max-width: none;
             }
 
             section:not(.hero)::after {
@@ -1427,6 +1444,7 @@
             .expertise-grid,
             .mosaic-grid {
                 grid-template-columns: 1fr;
+                width: 100%;
             }
 
             .visual-frame {
