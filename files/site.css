@@ -1104,13 +1104,21 @@
             color: var(--paper);
         }
 
-        #contact .section-copy,
         #contact .contact-row {
             background: rgba(16, 32, 26, 0.36);
             border-color: rgba(255, 255, 255, 0.22);
             box-shadow: 0 22px 56px rgba(0, 0, 0, 0.18);
             -webkit-backdrop-filter: blur(16px) saturate(120%);
             backdrop-filter: blur(16px) saturate(120%);
+        }
+
+        #contact .section-copy {
+            padding: 0;
+            border: 0;
+            background: transparent;
+            box-shadow: none;
+            -webkit-backdrop-filter: none;
+            backdrop-filter: none;
         }
 
         #contact .button.secondary {
@@ -1284,28 +1292,20 @@
                 order: 2;
             }
 
-            #education .education-headings .section-title:last-child {
+            #education .certifications-block {
                 order: 3;
             }
 
-            #education .education-side {
+            #education .education-headings .section-title:last-child {
                 order: 4;
             }
 
-            #education .certifications-block .section-title {
+            #education .education-side {
                 order: 5;
             }
 
-            #education .certifications-panel {
+            #education .interests-block {
                 order: 6;
-            }
-
-            #education .interests-block .section-title {
-                order: 7;
-            }
-
-            #education .interests-panel {
-                order: 8;
             }
 
             section {
